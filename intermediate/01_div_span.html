@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block level & Inline Elements</title>
+    <style>
+        div, span {
+            width: 33%;
+            height: 100px;
+            border: 1px solid red;
+        }
+        #d1 {
+            background-color: orange;
+        }
+        #d2 {
+            background-color: palegreen;
+        }
+        #d3 {
+            background-color: pink;
+        }
+        #d2, #d3 {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1><a href="../index.html">index 돌아가기</a></h1>
+    <h2>Block level과 Inline Elements의 차이</h2>
+    <div>
+        영역 분할 1
+    </div>
+    <div>
+        영역 분할 2
+    </div>
+    <div>
+        영역 분할 3
+    </div>
+    <hr>
+    <span>span tag</span>
+    <span>span tag</span>
+    <span>span tag</span>
+    <hr>
+    <h2>div의 중첩</h2>
+    <div id="d1">
+        div 1
+        <div id="d2">
+            div 2
+            <div id="d3">
+                div 3
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div id="outer">
+        <div id="inner1">
+            <div id="inner1_1"></div>
+            <div id="inner1_2"></div>
+        </div>
+        <div id="inner2">
+            <div id="inner2_1"></div>
+            <div id="inner2_2"></div>
+        </div>
+    </div>
+        
+</body>
+</html>

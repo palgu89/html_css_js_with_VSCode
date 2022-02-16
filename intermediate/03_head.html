@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>head태그의 구성</title>
+</head>
+<body>
+    <h1><a href="../index.html">index 돌아가기</a></h1>
+    <dl>
+        <dt>title 태그</dt>
+        <dd>
+            브라우저의 구성중 탭의 제목을 설정(곧 그 문서의 제목)
+        </dd>
+        <dt>meta 태그</dt>
+        <dd>
+            브라우저가 출력하는 문서의 기능, 컨텐츠, 환경, 스타일링, 자바스크립트 등을 설정
+            <ul>
+                <li>charset 속성: 문서의 인코딩</li>
+                <li>http-equiv 속성: 문서를 전송해서 해석하는 브라우저의 멀티미디어 형식을 설정</li>
+                <li>name="viewport": 문서의 출력 형태를 설정 --> 데스크탑이랑 폰이랑 다르게</li>
+                <li>content="width=device-width, initial-scale=1.0": 현재 사용하는 기기의 출력 배율 1을 사용</li>
+                <li>위의 viewport, content 설정은 반응형 웹을 제작시 필수!!</li>
+            </ul>
+            <ul>
+                <li>name="keywords": 문서가 포함하고 있는 컨텐츠들의 대표 키워드</li>
+                <li>name="author": 문서 작성자</li>
+                <li>name="description": 문서가 포함하고 있는 컨텐츠의 주제</li>
+            </ul>
+        </dd>
+        <dt>style 태그</dt>
+        <dd>CSS 코드를 작성해서 문서가 로드 될 때 실행될 수 있도록 하는 부분</dd>
+        <dt>script 태그</dt>
+        <dd>자바스크립트 코드를 작성해서 문서가 로드 될 때 실행될 수 있도록 하는 부분</dd>
+        <dt>link 태그</dt>
+        <dd>이 문서가 필요한 소스가 있는 위치값(url)을 문서가 로드 될 때 실행하여 문서에 적용될 수 있도록 함</dd>
+        <dt>base 태그</dt>
+        <dd>문서가 링크(a 태그, link 태그)를 사용할 때 절대적인 시작 주소를 설정</dd>
+    </dl>
+</body>
+</html>
