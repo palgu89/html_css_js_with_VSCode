@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .test::before { /*content를 앞에 붙일거야*/
+            content: '이것은';
+            font-style: italic;
+            font-size: larger;
+            font-weight: bolder;
+        }
+        .test2::after { /*content를 뒤에 붙일거야*/
+            content: '정말 그렇다구요';
+            font-weight: bolder;
+        }
+    </style>
+</head>
+<body>
+    <h1>문자선택자: 태그의 컨텐츠를 조작할 때 사용</h1>
+    <div>
+        <p>첫번째 문장입니다.</p>
+        <p class="test">두번째 문장입니다.</p>
+        <p class="test">세번째 문장입니다.</p>
+        <p class="test2">소개팅엔 애프터가 기본이죠!</p>
+    </div>
+</body>
+</html>

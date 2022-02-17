@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul li:first-child { /*첫 span이 아니라 그냥 첫번쨰 li를 의미함*/
+            background-color:  teal;
+        }
+        ul li:last-child {
+            background-color: thistle;
+        }
+        ul li:nth-child(3) {
+            background-color: tomato;
+        }
+        ol li:nth-child(2n+1) { /*짝수는 even 홀수는 odd로 대체 가능*/
+            font-size: 200%;
+        }
+        ol li:nth-last-child(2n) {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h1>구조선택자: 태그의 위치에 따라 관계성을 파악하여 스타일링 할 때 사용</h1>
+    <ul>
+        <li>
+            <span>첫번째 리스트의 첫번째 li</span><br>
+            <span>첫번째 리스트의 첫번째 li의 두번째 sapn</span>
+        </li>
+        <li>첫번째 리스트의 두번째 li</li>
+        <li>첫번째 리스트의 세번째 li</li>
+        <li>첫번째 리스트의 네번째 li</li>
+        <li>첫번째 리스트의 다섯번째 li</li>
+    </ul>
+    <h3>nth-child(2n)에서 수열 변수 n은 0부터 시작합니다</h3>
+    <h3>nth-child(odd), nth-child(even)은 각각 2n+1, 2n을 변수화한 것</h3>
+    <h3>nth-last-child도 같은 원리인데 역으로 진행</h3>
+    <ol>
+        <li>nth-child(1)</li>
+        <li>nth-child(2)</li>
+        <li>nth-child(3)</li>
+        <li>nth-child(4)</li>
+        <li>nth-child(5)</li>
+        <li>nth-child(6)</li>
+        <li>nth-child(7)</li>
+        <li>nth-child(8)</li>
+        <li>nth-child(9)</li>
+        <li>nth-child(10)</li>
+    </ol>
+</body>
+</html>

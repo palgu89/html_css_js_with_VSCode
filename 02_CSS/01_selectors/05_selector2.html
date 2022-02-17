@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>결합선택자, 조합선택자</title>
+    <style>
+        .first input {  /*후손선택자, first 클래스 아래 input에 적용*/
+            width: 500px;
+            height: 50px;
+        }
+        .second > input {   /*자식선택자, 후손과 기능은 같음 대신 태그 건너뛰기 안됨*/
+            width: 500px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>단일, 복수 선택 기능 구현</h1>
+    <div class="first">
+        <form>
+            혈액형은 ? <br>
+            <input type="radio" name="blood" value="A" checked>A&nbsp;
+            <input type="radio" name="blood" value="B">B&nbsp;
+            <input type="radio" name="blood" value="O">O&nbsp;
+            <input type="radio" name="blood" value="AB">AB <br>
+            <input type="submit" value="선택">
+        </form>
+    </div>
+    <div>
+        <form class="second">
+            <input type="checkbox" name="hobby1" id="" value="독서">독서&nbsp;
+            <input type="checkbox" name="hobby2" id="" value="영화감상" checked>영화감상&nbsp;
+            <input type="checkbox" name="hobby3" id="" value="축구">축구<br>
+            <button type="submit" disabled>취미선택완료</button>
+        </form>
+    </div>
+</body>
+</html>
