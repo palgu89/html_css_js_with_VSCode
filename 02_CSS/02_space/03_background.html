@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #outer {
+            width: 100%;
+            height: 100%;
+            background-image: url("res/img1.jpg");
+            background-repeat: no-repeat;
+            /*background-repeat: repeat;*/
+        }
+        div {
+            width: 500px;
+            height: 300px;
+            margin-bottom: 50px;
+        }
+        body div:first-child {
+            border: 1px solid red;
+            background-color: blue;
+            opacity: 0.5;
+        }
+        #next {
+            border: 1px solid red;
+            background-color: rgba(0,0,255,0.5);
+        }
+        #back {
+            background-image: url("res/img1.jpg");
+        }
+        #back2 {
+            background-image: url("res/img1.jpg");
+        }
+    </style>
+</head>
+<body>
+    <div id="outer">
+        <div>
+            투명처리(opacity)와 배경색의 투명도 차이
+        </div>
+        <div id="next">
+           투명처리(opacity)와 배경색의 투명도 차이
+        </div>
+        <div id="back">
+
+        </div>
+        <div id="back2">
+            <img src="res/img1.jpg" alt="" width="300" height="200">
+        </div>
+    </div>
+</body>
+</html>
