@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 300px;
+            border: 1px solid red;
+            text-align: justify;
+        }
+        /* span {  내가 center할 공간이 확보되어야 center 가능
+                    span은 공간이 나뿐이기에 center 못함
+            border: 1px solid red;
+            text-align: center;
+        } */
+        p {
+            border: 1px solid green;
+        }
+        span {
+            border: 1px solid springgreen;
+            width: 1000px;
+            text-decoration: overline;
+        }
+        h2 {
+            text-align: left;
+        }
+        h3 {
+            text-align: center;
+        }
+        h4 {
+            text-align: right;
+        }
+        #va {
+            width: 50%;
+            height: 500px;
+            border: 1px solid red;
+            /* vertical-align: middle; 여기다가 하면 안 됨 */
+            line-height: 500px;
+            text-align: center;
+        }
+        #sp {
+            vertical-align: middle;
+        }
+        #pd { /*이런 방법으론 센터에 맞추기 힘듦*/
+            height: 400px;
+            padding: 180px;
+        }
+    </style>
+</head>
+<body>
+    <h1>text-align: 정렬할 공간이 반드시 필요! - inline 자체에서 정렬 불가</h1>
+    <h2>좌측정렬(default)</h2>
+    <h3>가운데정렬</h3>
+    <h4>우측정렬</h4>
+    <h1>justify는 특수한 경우에 사용 (언론사 웹페이지의 기사)</h1>
+    <div>
+        <p>center alignmadasdafafdfdsfs   fsdfs   sgsdgsent</p>
+    </div>
+    <hr>
+    <div>
+        <span>center alignmentaasdfasdfasdfasdfasdfasdfasdfsdfadsfad    fsafsfasf      afsdf</span>
+    </div>
+    <hr>
+    <h1>Text Vertical Align (수직정렬)</h1>
+    <div id="va">
+        <span id="sp">Text Vertical Align</span>
+    </div>
+    <div id="pd">
+        <span>패딩을 사용해서 중앙정렬 해보기</span>
+    </div>
+</body>
+</html>

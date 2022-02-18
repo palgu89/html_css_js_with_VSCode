@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+    border: 0px;
+    text-align: center;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('nikeimg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+.info {
+    display: inline-block;
+    width: 50%;
+    background-color: #fff;
+    margin: 17% auto 0px;
+    padding: 0;
+}
+img {
+    width: 10%;
+    height: 10%;
+    margin-top: 20px;
+}
+h5 {
+    font-size: 0.5em;
+    color: #aaa;
+}
+p {
+    font-size: 0.25em;
+    color: #bbb;
+    background-color: #eee;
+    border-top: 1px solid #ccc;
+    padding: 5px 0 10px;
+    margin: 0px;
+}

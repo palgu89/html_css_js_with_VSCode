@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>link 특성을 활용한 버튼 만들기</title>
+    <style>
+        /*연습하기 좋다. 실제로 사용은 못할 듯*/
+        /*그냥 button을 이용하자 --> 버튼도 수정 가능*/
+        a, button {
+            display: block;
+            width: 200px;
+            height: 100px;
+        }
+        a {
+            border: 1px solid gray;
+            border-radius: 2px;
+            text-align: center;
+            line-height: 100px; /*줄 간격 넓혀놓고 vertical-align으로 중앙으로 보낸다*/
+            vertical-align: middle;
+            padding: 0;
+            color: black;
+            background-color: #efefef;
+        }
+        a:link {
+            text-decoration: none;
+            color: black;
+        }
+        a:hover {
+            background-color: #dedede;
+        }
+        button:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button type="button">일반 버튼</button>
+    <hr>
+    <a href="">anchor를 변경시킨 버튼</a>
+</body>
+</html>

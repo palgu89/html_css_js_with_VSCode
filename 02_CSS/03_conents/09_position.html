@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position Property</title>
+    <!-- CSS의 property = HTML의 attribute -->
+    <style>
+        li {
+            width: 40%;
+            height: 100px;
+        }
+        li:first-child {
+            position: fixed; /*브라우저(인터넷창 하얀 화면)에 고정시킬거야 스크롤 내려도 안 움직여*/
+            bottom: 50px; /*아래에서 50px 올라옴*/
+            right: 50px; /*오른쪽에서 50px 왼쪽으로 움직임*/
+            background-color: bisque;
+        }
+        li:last-child {
+            position: absolute; /*원래 위치 무시. 절대적 위치에서 시작하겠다*/
+            top: 300px; /*위에서 300px 내려옴*/
+            right: 100px; /*오른쪽에서 100px 왼쪽으로 움직임*/
+            background-color: chocolate;
+        }
+        li:nth-child(2) {
+            color: #fff;
+            background-color: crimson;
+            /* position: static; --> 변화 없음 어차피 static이어서*/
+        }
+        li:nth-child(3) {
+            position: relative; /*움직일 준비 완료*/
+            left: 30px; /*왼쪽으로부터 30px 움직임*/
+            top: 50px; /*위로부터 50px 움직임 --> 겹쳐짐*/
+            color: #fff;
+            background-color: darkcyan;
+        }
+        hr {
+            width: 30px;
+        }
+        .relative {
+            position: relative;
+            width: 400px;
+            height: 200px;
+            border: 3px solid #73AD21;
+        }
+        .absolute {
+            position: absolute; /*relative에 쌓여져 있으므로 relative를 기준으로 absolute*/
+            top: 80px;
+            right: 0;
+            width: 200px;
+            height: 100px;
+            border: 3px solid #73AD21;
+        }
+    </style>
+</head>
+<body>
+    <h1>Position</h1>
+    <ul>
+        <li>fixed : 브라우저를 기준으로 특정 위치에 고정으로 배치</li>
+        <li>static (default) : 원래의 정상적인 흐름(위치)</li>
+        <li>relative : 정상적인 위치로부터 상대적인 위치에 태그(요소-element)를 배치</li>
+        <li>absolute : 부모태그가 relative일 때, 혹은 부모태그 중 relative가 없으면<br>
+            전체페이지(body)를 기준으로 시작위치에서 top, left, right, bottom 등의 절대적 수치만큼 배치</li>
+        <!-- relative는 현재 내 위치(static으로 지정 된 위치)에서 움직일 수 있다.-->
+        <!-- absolute는 위치 지정하면 스크롤 내리거나 올리면 없어짐-->
+        <!-- fixed는 스크롤 내려도 지정한 위치에 고정-->
+    </ul>
+    <div class="relative">This div element has position: relative;
+        <div class="absolute">This div element has position: absolute;</div>
+    </div>
+    <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+    <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+    <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+    <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+    <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+    <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+    <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+    <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+    <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+    <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+    <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+    <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+    <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+    <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+</body>
+</html>

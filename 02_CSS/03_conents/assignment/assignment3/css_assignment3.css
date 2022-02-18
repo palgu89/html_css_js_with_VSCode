@@ -1,0 +1,66 @@
+@font-face {
+    font-family: jua;
+    src: url('Jua-Regular.ttf');
+}
+.back {
+    width: 900px;
+    height: 100%;
+    color: #58595B;
+    box-sizing: border-box;
+    color: #58595b;
+    font-family: jua;
+    font-weight: lighter;
+    font-weight: bolder;
+    letter-spacing: -1px;
+    background-color: #F0E8D9;
+    text-align: center;
+    padding: 0px;
+    margin-top: 0px;
+    margin-left: 50px;
+    margin-right: 50px;
+    border: 1px solid #F0E8D9;
+}
+.title {
+    font-size: 64px;
+    margin-top: 75px;
+}
+.subTitle {
+    font-size: 32px;
+    margin-top: 30px;
+    margin-bottom: 25px;
+}
+img {
+    width: 300px;
+    height: 200px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-top: 25px;
+}
+.box {
+    box-sizing: border-box;
+    display: inline-block;
+    background-color: white;
+    width: 300px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-top: -5px;
+    margin-bottom: 25px;
+    padding: 20px;
+}
+.store {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+.nomoney::before {
+    content: '주머니가 가벼운 당신의 마음까지 생각한 착한 가격!';
+    font-size: 16px;
+}
+.pay::before {
+    content: '바로 결제';
+    font-size: 16px;
+    color: #0042f8;
+}
+.nomoney {
+    text-align: left;
+    margin-bottom: 16px;
+}

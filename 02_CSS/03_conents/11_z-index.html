@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position Ex</title>
+    <style>
+        /* 선생님 스타일 */
+        .container {
+            position: relative;
+            top: 50px;
+            left: 100px;
+            width: 800px;
+            height: 800px;
+            border: 1px solid steelblue;
+        }
+        .box {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+        }
+        #b1 {
+            background-color: red;
+            left: 100px;
+            top: 100px;
+            /*z-index : z축에서 본 위치값 --> 어떤게 더 위로 올지 결정 할 수 있다.*/
+            /*relative는 z-index가 먹지 않는다.*/
+            z-index: 100; /*보통은 1~100을 사용*/
+        }
+        #b2 {
+            background-color: green;
+            left: 200px;
+            top: 200px;
+            z-index: 50;
+        }
+        #b3 {
+            background-color: blue;
+            left: 300px;
+            top: 300px;
+            z-index: -1; /*보통 가장 하단 값을 0, -1을 사용*/
+        }
+        .fixed {
+            position: fixed;
+            width: 200px;
+            height: 100px;
+        }
+        #f1 {
+            background-color: rosybrown;
+            bottom: 100px;
+            right: 100px;
+            z-index: -1;
+        }
+        #f2 {
+            background-color: royalblue;
+            bottom: 150px;
+            right: 150px;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    </div>
+    <!-- 선생님 방식-->
+    <div class="container">
+        <div class="box" id="b1"></div>
+        <div class="box" id="b2"></div>
+        <div class="box" id="b3"></div>
+    </div>
+        <div class="fixed" id="f1"></div>
+        <div class="fixed" id="f2"></div>
+    <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+    <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+    <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+</body>
+</html>
