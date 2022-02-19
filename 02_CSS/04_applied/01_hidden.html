@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display: none VS Visibility: hidden</title>
+    <style>
+        div {
+            width: 300px;
+            height: 200px;
+            background-color: blueviolet;
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-align: center;
+        }
+        body div:nth-child(2) { /*body 하위 div는 h1도 포함*/
+            /* display: none; */ /*박스와 공간자체도 사라짐*/
+            visibility: hidden;  /*박스는 사라지고 공간은 남음*/
+        }
+    </style>
+</head>
+<body>
+    <h1>Element를 제거하느냐 VS 숨기느냐?</h1>
+    <div>First Div Element</div>
+    <div>Second Div Element</div>
+    <div>Third Div Element</div>
+</body>
+</html>

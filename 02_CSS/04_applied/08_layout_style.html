@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layout Style</title>
+    <link rel="stylesheet" href="" />
+    <style>
+        * {
+            box-sizing: border-box;
+            /* margin: 0;
+            padding: 0; */
+            /* 여기에 margin 0, padding 0을 주면 ol의 숫자가 빠져 나간다. */
+        }
+        .container div {
+            padding: 20px;
+        }
+        .w25 {
+            float: left;
+            width: 25%;
+            background-color: black;
+            height: 100vh;
+            color: white;
+        }
+        .w75 {
+            float: left;
+            width: 75%;
+            background-color: burlywood;
+            height: 100vh;
+        }
+        ol {
+            border: 1px solid red;
+            font-size: 2em;
+        }
+        li {
+            border: 1px solid blue;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="w25">컨텐츠의 구성이 화면 크기에 영향을 어떻게 받을것인가?</div>
+      <div class="w75">
+          <ol>
+              <li>화면의 일부 파트의 수직/수평 분할은 항상 컨테이너 개념을 사용</li>
+              <li>분할 된 영역의 컨테이너를 가르키는 클래스 이름을 체계적으로 작명</li>
+          </ol>
+      </div>
+    </div>
+    <script></script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+    border: 0px;
+    border-radius: 5px;
+}
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #1BBC96;
+}
+.login-form {
+    width: 300px;
+    background-color: #eeeff1;
+    text-align: center;
+    padding: 20px;
+    
+    position: absolute;
+    left: 50%;
+    top: 50%;   /*이렇게 하면 좌측 꼭지점을 기준으로 중앙으로 간다.*/
+    transform: translate(-50%, -50%); /*그 상태에서 login-form의 50%씩 올라간다.*/
+}
+input {
+    padding: 10px;
+    width: 100%;
+}
+.text-field {
+    font-size: 0.75em;
+    margin: 0px 0px 10px;
+}
+.submit-btn {
+    color: white;
+    background-color: #1BBC96;
+    margin: 0px 0px 30px;
+}
+.links > a {
+    color: #9b9b9b;
+    font-size: 0.75em;
+}

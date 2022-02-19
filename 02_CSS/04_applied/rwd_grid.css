@@ -1,0 +1,130 @@
+/*768px 미만 일 때 스타일*/
+body {
+    margin: 0%;
+}
+div {
+    width: 100%;
+}
+.d1 {
+    height: 50px;
+    background-color: midnightblue;
+}
+.d2 {
+    height: 350px;
+    background-color: lightblue;
+}
+.d3 {
+    height: 320px;
+    background-color: mistyrose;
+}
+.d4 {
+    height: 400px;
+    background-color: mediumseagreen;
+}
+.d5 {
+    height: 200px;
+    background-color: lightslategray;
+}
+.d6 {
+    height: 200px;
+    background-color: ivory;
+}
+.footer {
+    clear: both;
+    background-color: hotpink;
+    height: 100px;
+}
+
+@media screen and (min-width: 768px) {
+    /*768px ~ 1024px 일 떄 스타일*/
+    body {
+        margin: 0;
+    }
+    div {
+        width: 100%;
+    }
+    .d1 {
+        height: 50px;
+        background-color: midnightblue;
+    }
+    .d2 {
+        height: 550px;
+        background-color: lightblue;
+    }
+    .d3 {
+        height: 250px;
+        background-color: mistyrose;
+    }
+    .d4 {
+        float: left;
+        width: 50%;
+        height: 400px;
+        background-color: mediumseagreen;
+    }
+    .d5 {
+        float: right;
+        width: 50%;
+        height: 200px;
+        background-color: lightslategray;
+    }
+    .d6 {
+        float: right;
+        width: 50%;
+        height: 200px;
+        background-color: ivory;
+    }
+    .footer {
+        clear: both;
+        background-color: hotpink;
+        height: 100px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    /*1024px 이상일 떄 스타일*/
+    body {
+        margin: 0;
+    }
+    div {
+        width: 100%;
+    }
+    .d1 {
+        height: 50px;
+        background-color: midnightblue;
+    }
+    .d2 {
+        width: 50%;
+        float: left;
+        height: 800px;
+        background-color: lightblue;
+    }
+    .d3 {
+        width: 50%;
+        float: right;
+        height: 400px;
+        background-color: mistyrose;
+    }
+    .d4 {
+        float: left;
+        width: 25%;
+        height: 400px;
+        background-color: mediumseagreen;
+    }
+    .d5 {
+        float: right;
+        width: 25%;
+        height: 200px;
+        background-color: lightslategray;
+    }
+    .d6 {
+        float: right;
+        width: 25%;
+        height: 200px;
+        background-color: ivory;
+    }
+    .footer {
+        clear: both;
+        background-color: hotpink;
+        height: 100px;
+    }
+}
