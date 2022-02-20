@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>함수를 만들어 봅시다</title>
+<link rel="stylesheet" href="">
+<!-- 함수 선언을 head에 해도 된다. -->
+<script>
+    // 함수선언식 -> 얘만 있으면 실행은 되지 않는다. -> 호출 해줘야 함
+    function myFirstFunction () {      // function 이름 (파라미터) {}
+        console.log('이 함수는 제가 처음으로 만들어본 함수에요');
+        console.log('정말 신기하다');
+        console.log('그런데 왜 이런걸 만드나요?');
+    }
+    // head 태그 안의 스크립트는 함수 선언식을 위주로 구성한다.
+    // 특별한 경우가 아니면 실행하는 코드를 작성하지 말 것!
+</script>
+</head>
+<body>
+    <h1>자바스크립트 함수: 개발자 콘솔(F12)을 확인하세요</h1>
+
+<script>
+    // 선언된 함수 호출하기 (기본적인 함수 호출방식: call function)
+    myFirstFunction();
+    console.log('-------------링딩동 출력해보기----------------')
+    function ringdingdong() {
+        console.log('Ring ding dong ring ding dong');
+        console.log('Ring diggy ding diggy ding ding ding');
+    }
+    console.log('Babe, 네게 반해버린 내게 왜 이래\n 두렵다고 물러서지 말고\n 그냥 내게 맡겨봐라 어때 My lady');
+    ringdingdong();
+    ringdingdong();
+    ringdingdong();
+    ringdingdong();
+    console.log('Butterfly! 너를 만난 첫 순간\n 눈이 번쩍 머린 stop 벨이 딩동 울렸어 난 말야\n 멋진 놈 착한 놈 그런 놈은 아니지만\n 나름대로 괜찮은 bad boy\n 너는 마치 butterfly 너무 약해 빠졌어\n 너무 순해 빠졌어 널 곁에 둬야겠어\n 더는 걱정 마 걱정 마 나만 믿어보면 되잖아\n 니가 너무 맘에 들어 놓칠 수 없는 걸\n Babe 내 가슴을 멈출 수 oh crazy\n 너무 예뻐 견딜 수 oh crazy\n 너 아니면 필요 없다 crazy 나 왜 이래\n We wanna go rocka rocka rocka rocka rocka\n (So fantastic)\n Go rocka rocka rocka rocka rocka\n (So elastic)\n Fantastic fantastic fantastic fantastic\n Elastic elastic elastic elastic');
+    ringdingdong();
+    ringdingdong();
+    ringdingdong();
+    ringdingdong();
+    // 엔터 효과는 \n 으로 줄 수 있다.
+
+</script>
+</body>
+</html>

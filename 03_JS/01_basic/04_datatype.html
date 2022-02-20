@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Type</title>
+<link rel="stylesheet" href="">
+<style></style>
+</head>
+<body>
+<h1>Javascript Data Type</h1>
+<ul>
+    <li>숫자: Number [정수, 실수, NaN(숫자가 아닌데 숫자로 분류되는 값)]</li>
+    <li>문자: String [따옴표(',")로 감싼 모든 것]</li>
+    <li>참거짓: boolean [true, false]</li>
+    <li>객체: Object</li>
+    <li>배열: Array(배열객체)</li>
+    <li>미정된 값: undefined</li>
+    <li>알수없는 존재: null</li>
+</ul>
+<h1>Data type을 알고 싶을 때 사용하는 키워드: typeof</h1>
+<h1>
+    자바스크립트의 기본 데이터 타입: Primitive Type
+</h1>
+<ul>
+    <li>number</li>
+    <li>boolean</li>
+    <li>string(원래 참조형 데이터 타입! 특수하게 변형된 형태)</li>
+    <li>다른 프로그래밍 언어에서는 string은 참조형 데이터 타입임</li>
+</ul>
+<h1>
+    자바스크립트의 참조 테이터 타입: Reference Type
+</h1>
+<ul>
+    <li>string</li>
+    <li>Object</li>
+    <li>Array</li>
+    <li>function</li>
+    <li>etc...</li>
+</ul>
+<script>
+    let myName = 'Son';
+    console.log(typeof 55)
+    console.log(typeof myName);
+    console.log(typeof true);
+    console.log('NaN의 테이터 타입:',typeof NaN);   //number
+    // 빠른 연산(문자<숫자)을 위해 문자->NaN으로 바꿔 연산 후 다시 돌려놓는 형태
+    // ex) let x = 100 / "Apple";
+    // isNaN(x);    // returns true because x is Not a Number
+    
+    // Infinity는 무한대, 데이터타입은 숫자
+    // 문자는 '' 나 ""에 작성하는데 'she say "Hello."' 또는 "it's me!" 가능
+    // 문자의 길이를 알고 싶으면 변수.length; 사용
+
+</script>
+</body>
+</html>
