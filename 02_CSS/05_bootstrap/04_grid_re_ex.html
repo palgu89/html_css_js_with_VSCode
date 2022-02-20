@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid Ex</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <script src="https://kit.fontawesome.com/58e52d7ffb.js" crossorigin="anonymous"></script>
+    <style>
+        .carousel-item {
+            height: 400px;
+        }
+        .carousel-inner > div:first-child {
+            background-image: url("cook.jpg");
+            background-size: contain;
+            background-position: center center;
+        }
+        .carousel-inner > div:nth-child(2) {
+            background-image: url("makeup.png");
+            background-size: cover;
+             background-position: center center;
+        }
+        .carousel-inner > div:last-child {
+            background-image: url("music.jpg");
+            background-size: contain;
+            background-position: center center;
+        }
+        .carousel-caption {
+            position: absolute;
+            top: 55%;
+            transform: translateY(-50%);
+        }
+        .carousel-caption p {
+            margin: 18px 0 48px 0;
+        }
+        .carousel-caption a {
+            color: white;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            background-color: #5900E7;
+            padding: 10px 30px;
+        }
+        .container {
+            padding-bottom: 50px;
+        }
+        .card {
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+            padding: 0;
+            margin-bottom: 20px;
+        }
+        .card-body h4 {
+            font-size: 18px;
+            color: #4a4a4a;
+        }
+        .card-body i {
+            width: 20px;
+            height: 20px;
+            float: left;
+        }
+        .card-body p {
+            font-size: 13px;
+            color: #4a4a4a;
+        }
+        .card-box {
+            line-height: 20px;
+            vertical-align: middle;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+        <div class="row first">
+            <!-- navber -->
+            <nav class="navbar navbar-expand-lg bg-light navbar-light">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">89Club</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav me-auto">
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">튜터 신청</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">수업 목록</a>
+                      </li>
+                    </ul>
+                    <span class="navbar-text">
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                              <a class="nav-link" href="#">회원가입</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" href="#">로그인</a>
+                            </li>
+                        </ul>
+                    </span>
+                  </div>
+                </div>
+            </nav>
+
+            <div id="carouselExampleDark" class="carousel carousel-light slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active" data-bs-interval="10000">
+                    <!-- <img src="..." class="d-block w-100" alt="..."> -->
+                    <div class="carousel-caption d-md-block">
+                      <h5>요리 배워보세요</h5>
+                      <div class="card-box">
+                          <p>멋진 요리사들이 주변에 있습니다.</p>
+                          <a href="#">수업 찾기</a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item" data-bs-interval="2000">
+                    <!-- <img src="..." class="d-block w-100" alt="..."> -->
+                    <div class="carousel-caption d-md-block">
+                      <h5>메이크업 배워보세요</h5>
+                      <div class="card-box">
+                          <p>멋진 메이크업 아티스트들이 주변에 있습니다.</p>
+                          <a href="#">수업 찾기</a>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <!-- <img src="..." class="d-block w-100" alt="..."> -->
+                    <div class="carousel-caption d-md-block">
+                      <h5>음악 배워보세요</h5>
+                      <div class="card-box">
+                          <p>멋진 뮤지션들이 주변에 있습니다.</p>
+                          <a href="#">수업 찾기</a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            
+        </div>
+    </div>
+    <div class="container">
+        <div class="row second">
+            <!-- Alert -->
+            <div class="alert alert-warning alert-dismissible" style="margin: 50px 0 16px 0;">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <strong>튜터 모집!</strong> 재능을 나누어봐요.
+            </div>
+
+            <!-- card -->
+            <div class="col-sm-6 col-lg-4 col-xl-3">
+                <div class="card">
+                    <img class="card-img-top" src="card1.jpg" alt="Card image" style="width:100%; height: 200px;">
+                    <div class="card-body">
+                        <h4 class="card-title">내 음식 내가 만들어 먹기</h4>
+                        <i class="fas fa-user-circle" style="width: 20px; height: 20px;"></i>
+                        <p class="card-text">배달의 민족</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                <div class="card">
+                    <img class="card-img-top" src="card2.jpg" alt="Card image" style="width:100%; height: 200px;">
+                    <div class="card-body">
+                        <h4 class="card-title">내 이야기를 노래로</h4>
+                        <i class="fas fa-user-circle"></i>
+                        <p class="card-text">김명민</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                <div class="card">
+                    <img class="card-img-top" src="card3.jpg" alt="Card image" style="width:100%; height: 200px;">
+                    <div class="card-body">
+                        <h4 class="card-title">21세기 명필은 나</h4>
+                        <i class="fas fa-user-circle"></i>
+                        <p class="card-text">한석봉</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                <div class="card">
+                    <img class="card-img-top" src="card4.jpg" alt="Card image" style="width:100%; height: 200px;">
+                    <div class="card-body">
+                        <h4 class="card-title">한국 메시 육성</h4>
+                        <i class="fas fa-user-circle"></i>
+                        <p class="card-text">히딩크</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                <div class="card">
+                    <img class="card-img-top" src="card5.jpg" alt="Card image" style="width:100%; height: 200px;">
+                    <div class="card-body">
+                        <h4 class="card-title">잡생각 버리기</h4>
+                        <i class="fas fa-user-circle"></i>
+                        <p class="card-text">회사원</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                <div class="card">
+                    <img class="card-img-top" src="card6.jpg" alt="Card image" style="width:100%; height: 200px;">
+                    <div class="card-body">
+                        <h4 class="card-title">지구촌 여행</h4>
+                        <i class="fas fa-user-circle"></i>
+                        <p class="card-text">집돌이</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                <div class="card">
+                    <img class="card-img-top" src="card7.jpg" alt="Card image" style="width:100%; height: 200px;">
+                    <div class="card-body">
+                        <h4 class="card-title">못 오를 벽은 없다</h4>
+                        <i class="fas fa-user-circle"></i>
+                        <p class="card-text">스파이더맨</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                <div class="card">
+                    <img class="card-img-top" src="card8.jpg" alt="Card image" style="width:100%; height: 200px;">
+                    <div class="card-body">
+                        <h4 class="card-title">자 득음 가보자</h4>
+                        <i class="fas fa-user-circle"></i>
+                        <p class="card-text">송해 선생님</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+h1 {
+    font-size: 3em; /*1em=16px*/
+}
+p {
+    background-color: #000000;
+    color: #ffffff;
+}
+div {
+    border: 3px dotted #00ff00; /*solid는 실선 dotted는 점선*/
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap Grid System</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <style>
+        .first {
+            background-color: brown;
+        }
+        .second {
+            background-color: cadetblue;
+        }
+        .third {
+            background-color: turquoise;
+        }
+        .row > div {
+            height: 100px;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>부트스트랩 그리드 시스템의 이해</h1>
+    <ul>
+        <li>컨테이너 (.container)</li>
+        <li>행 (.row)</li>
+        <li>열 (.col-*-*)</li>
+    </ul>
+    <dl>
+        <dt>
+            행은 반드시 꼭 컨테이너 클래스 안에 넣어주세요!
+        </dt>
+        <dl>
+            기본적으로 행은 컨테이너 클래스의 레이어 및 레이아웃의 영향을 받게 설계됨.
+        </dl>
+        <dt>
+            열은 반드시 꼭 행 클래스 안에 넣어주세요!
+        </dt>
+        <dl>
+            오직 열만 행의 직속 자식이 될 수 있습니다!
+        </dl>
+        <dt>
+            콘텐츠(우리가 만드는 것들)는 꼭 열 클래스 안에 넣어주세요!
+        </dt>
+        <dl>
+            이 규칙을 지키면 예상하는 레이아웃이 구성 될 것입니다~
+        </dl>
+    </dl>
+        <h1>활용 예제</h1>
+        <div class="container text-center">
+            <div class="row mb-5">
+                <!-- 정확히 3등분 -->
+                <div class="col-4 first text-light">first</div>
+                <div class="col-4 second">second</div>
+                <div class="col-4 third">third</div>
+            </div>
+            <div class="row mb-5">
+                <!-- 정확히 2등분 -->
+                <div class="col-6 first">first</div>
+                <div class="col-6 second">second</div>
+            </div>
+            <div class="row mb-5">
+                <!-- 1 대 5 비율(20%:80&) -->
+                <div class="col-2 first">first</div>
+                <div class="col-10 second">second</div>
+            </div>
+            <div class="row">
+                <!-- 1 대 2 대 1 비율 (25%:50%:20%) -->
+                <div class="col-3 first">first</div>
+                <div class="col-6 second">second</div>
+                <div class="col-3 third">third</div>
+            </div>
+        </div>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-3 row">
+                        <form>
+                            <div class="mb-3">
+                              <label for="exampleInputEmail1" class="form-label">Email address</label>
+                              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
+                            <div class="mb-3">
+                              <label for="exampleInputPassword1" class="form-label">Password</label>
+                              <input type="password" class="form-control" id="exampleInputPassword1">
+                            </div>
+                            <div class="mb-3 form-check">
+                              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                          </form>
+                      </div>
+                </div>
+            </div>
+        </div>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
