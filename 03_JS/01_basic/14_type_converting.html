@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Type Converting</title>
+<link rel="stylesheet" href="">
+<style></style>
+</head>
+<body>
+<h1>자바스크립트 형 변환: F12</h1>
+<script>
+    let str = '100';                // string -> String()
+    let num = 10;                   // number -> Nubmer()
+    let bool = false;               // boolean -> Boolean()
+    let func = function () {        // function -> x
+        return 1;
+    }
+    let obj = {k1: 'val1', k2: 12};  // object -> x
+    let undi;                       // undefined -> x
+
+    // 자동형병환
+    let rs1 = str + num;            // num이 number임에도 str 때문에 string이 됨
+    let rs2 = str / num;
+    if (1) {                        // 1은 number지만 if문으로 인해 boolean이 됨
+        console.log('print:', 1);
+    }
+
+    // 강제형변환
+    let rs3 = Boolean(1);           // convert to true
+    let rs4 = Number(false);        // convert to 0
+    let rs5 = String(true);         // "true"
+    let rs6 = parseInt("1212");
+</script>
+</body>
+</html>

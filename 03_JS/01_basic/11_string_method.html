@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>String Method & Property</title>
+<link rel="stylesheet" href="">
+<style></style>
+</head>
+<body>
+<h1>자바스크립트 문자관련 메서드 및 속성: F12</h1>
+<ul>
+    <li>문자는 길이 속성을 갖고 있으며 문자열.length로 알 수 있음 </li>
+    <li>길이를 갖고 있다는 것은 시작과 끝이 있다는 개념으로 이해</li>
+    <li>그러므로 순서가 존재하고 그 순서를 숫자화 시킨 index라는 것이 존재</li>
+    <li>문자의 값은 불변(immutable)의 속성으로 인덱스를 활용해 값 자체를 변화시킬 수는 없다</li>
+    <li>인덱스는 0부터 시작하기 때문에 마지막 인덱스는 length -1 이라는 공식이 성립한다</li>
+    <li>인덱스르 활용한 메서드가 다양하고 실제 실무에서 문자관련 메서드는 많이 사용됨</li>
+</ul>
+<script>
+    let subject = 'Javascript Javascript is Funny?';
+    console.log(subject.length);            // 31 -> 띄어쓰기 포함
+
+    // slice(start_index, last_index+1)
+    // -> last_index+1 이라는건 index는 0부터 시작하기 때문에 원하는 부분 앞까지 보여지게 된다.
+    console.log(subject.slice(22, 30));     
+    console.log(subject.slice(10, subject.length));
+    console.log(subject.slice(0, 10));
+    console.log(subject.slice(10));         // 숫자 하나만 쓰면 그 숫자 인덱스부터 끝까지를 출력해준다.
+    // -를 붙이면 뒤에서부터 센다.
+    // slice(negative_sign_index) 가장 끝의 인덱스는 -1이라는 점을 이용한 것
+    // 혼동방지 차원에서 끝에서 몇번째라는 개념이 아닌 이상 잘 사용하지 않음
+    console.log(subject.slice(-2));
+
+    // substring(start_index, end_index)    // end_index 미포함 -> slice()와 동일
+    // 단 substring은 음수 파라미터 사용 불가
+
+    // substr(start_index, count)           // count: start_index부터 몇개 추출 할래?
+    // 음수 파라미터 사용 가능하며, 파라미터가 1개일 땐 마지막까지 추출
+
+    // replace(원래 있던 index, 바꿀 index): 새로운 문자를 생성 후 리턴한다
+    // 동일한 값이 두번이상 존재할 경우, 처음 찾은(인덱스가 빠른것) 문자열을 변경함
+    let new_subject = subject.replace('Javascript', 'ES6+');
+    console.log(subject);
+    console.log(new_subject);
+
+    // uppercase(), lowercase() 문자를 대문자, 소문자로 변경된 값을 생성 후 리턴
+    // 문자열.concat('문자열', ...) 문자를 연결하는 메서드 -> +라는 문자 결합자오 같음
+    let kor = '한국어';
+    let eng = '영어';
+    let chn = '중국어';
+
+    console.log(kor + '는 '+ eng + '보다' + ' 쉬운 언어일까요?');
+    let new_str = eng.concat('는 ', chn, '보다',' 쉬운 언어일까요?');
+    console.log(new_str);
+    console.log(`${chn}는 ${kor}보다 쉬운 언어일까요?`);    // 얘가 제일 간단한 방법
+
+
+    // padStart(idx, exp) padEnd(idx, exp)
+    console.log(kor.padStart(6, 'd'));      // ***한국어
+    console.log(eng.padEnd(6, '-'));        // 영어----
+
+    // access
+    console.log(subject.charAt(1));         // a -> 문자 전용 메서드
+    console.log(subject[1]);                // a -> 문자에도 가능은 하지만, 시퀀싱 개념이 적용된 데이터 타입에 사용 가능 ex) 배열
+</script>
+<h1>문자열 타입 정리</h1>
+<ol>
+    <li>immutable: 부분 수정 불가</li>
+    <li>위치값을 의미하는 index가 존재함</li>
+    <li>관련 메서드가 많아 자주 사용되는 것 위주로 숙지</li>
+</ol>
+<script>
+    // indexOf('str'), lastIndexOf('str') 문자열이 몇 번 index에 있느냐?
+    // 문자열이 시작하는 위치의 index를 리턴
+    let title = 'javascript String Data Type is string, why not String';
+    console.log(title.indexOf('Data'));
+    console.log(title.lastIndexOf('String'));
+    console.log(title.slice(title.indexOf(',')+1));    // 빈칸이 싫다면 +2
+
+    // middle quiz
+    // 웹 페이지에서 사용자들이 올린 이미지 파일이 진짜 이미지 파일인가를 확인하고 싶다.
+    // 확장자명으로 판단하나고 가정하고 확장자명을 추출하는 코드를 작성해 보세요
+    let img = 'image.jpg';
+    console.log(img.slice(img.indexOf('.')+1));
+
+    function validFileExtension(fileName) {
+        let ext = fileName.slice(fileName.lastIndexOf(',')+1);
+        if (ext.toLowerCase() == 'png' || ext.toLowerCase() == 'jpeg' || ext.toLowerCase() == 'jpg') {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    let file1 = 'alsjfldsjf.png';
+    let file2 = 'fkdhgjqljf.jpp';
+    let file3 = 'fidlskjl asd.JPEG';
+    
+    if (validFileExtension(file3)) {
+        console.log('이미지 파일이 맞습니다.');
+    }
+    else {
+        console.log('이미지 파일이 아닙니다.');
+    }
+    console.log(validFileExtension(file1) ? '이미지 파일이 맞습니다.' : '이미지 파일이 아닙니다.');
+    console.log(`이미지 파일이 ${validFileExtension(file2) ? '맞습니다' : '아닙니다'}`);
+    
+    // startsWith(), endsWith() : 대소문자 구분함
+    // startsWith('str', start_index) 찾는 시작점을 지정할 수 있다.
+    let tnf1 = file1.endsWith('png');    // true
+    let tnf2 = file2.endsWith('jpg');    // false
+    let tnf3 = file2.endsWith('jpeg');   // false -> file3.toLowercase().endsWith('jpeg'); -> true, method chainning
+    console.log(tnf1, tnf2, tnf3);
+
+    let text = "Hello World, welcome to the universe.";
+    console.log(text.endsWith("world", 11));    // true -> 앞에서부터 11개의 문자를 추출 후 특정문자로 끝나는지 판단
+
+</script>
+</body>
+</html>

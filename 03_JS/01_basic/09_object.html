@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>자바스크립트 오브젝트</title>
+<link rel="stylesheet" href="">
+<style></style>
+</head>
+<body>
+<h1>자바스크립트 객체 (object): F12 개발자콘솔</h1>
+<ul>
+    <li>객체는 객체이름, 프로퍼티(property), 프로퍼티 값(property-value)로 구성</li>
+    <li>객체이름은 객체의 존재 구분을 위한 명칭</li>
+    <li>프로퍼티는 그 객체를 구성하는 특징들의 고유 명칭</li>
+    <li>프로퍼티 값은 고유명칭을 설명하는 값</li>
+</ul>
+<ol>
+    <li>객체안의 프로퍼티에 함수를 정의하고 사용하면 그 함수는 메서드라고 부른다</li>
+    <li>그 메서드의 이름은 프로퍼티의 이름으로 사용됨</li>
+</ol>
+<script>
+    const me = {
+        name: 'Son',
+        age: 29,
+        addr: 'Pyoungtaek',
+        isDevAvail: true,
+        avail: {
+            title: 'javascript',
+            ver: 'ES6+',
+            project: 'Message App',
+            years: {
+                first: 2021,
+                mid: 'spring',
+                last: 'AI',
+                'son pil kyu': 'handsome'   // 가능하긴 한데 지양하세요. 띄어쓰기가 필요하다면 Son_pil_kyu가 낫다.
+            }
+        }
+    }
+    console.log(me.name, me.age, me.addr, me.isDevAvail);
+    console.log(me.avail.title, me.avail.ver, me.avail.project);
+    console.log(me.avail.years.first, me.avail.years.mid, me.avail.years.last);
+
+    console.log(me['name']);
+    console.log(me.avail['title']);
+    console.log(me['avail']['title']);
+
+    console.log('--------------------------');
+    me.name = "KIM";
+    console.log(me.name);
+
+    // object method
+    const you = {
+        name: 'Lee',
+        age: 30,
+        getOlder: function () {     // 메서드는 프로퍼티와 이름을 같이 하므로 함수이름은 생략한다
+            // console.log(you.age + 1);
+            // return you.age++;       // 30, 실행(?)하면 +1
+            return ++you.age;          // 31
+        },
+        addr: 'Seocho',
+        getYounger: function() {
+            return --you.age;
+        },  // 마지막은 ,를 찍어도 안찍어도 된다.
+    };      // 객체 마지막은 ;를 꼭 써주자 (안써도 실행은 된다)
+    console.log(you.getOlder());    // 30, 괄호를 빼면 그냥 메서드의 내용이 다 출력 된다.
+    // -> 이걸 출력하면 undefined가 뜨는데 이유는 메서드에서 return값이 없기 때문이다.
+    console.log(you.age);           // 31
+    console.log(you.getYounger());  // 30
+    console.log(you.age);           // 30
+
+    console.log('---------------------------------------');
+    const theMusicianInSeoul = {
+        name: 'Jang',
+        age: 29,
+        introduce: function(n, a) {
+            return `My name is ${n}, and I am ${a} years old.`;
+        },
+        introSelf: function() {
+            return `My name is ${this.name} and I am ${this.age} years old.`;
+        }   // 객체이름이 너무 길어서 this로 바꿔 줌 -> this는 부모 객체를 대체한다.
+    }
+    console.log(theMusicianInSeoul.introduce('Lim', 26));
+    console.log(theMusicianInSeoul.introSelf());
+</script>
+</body>
+</html>

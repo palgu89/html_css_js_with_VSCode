@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Middle Check</title>
+<link rel="stylesheet" href="">
+<style></style>
+</head>
+<body>
+    <h1>자바스크립트 Middle Check: 개발자 콘솔(F12)를 확인하세요</h1>
+    <h3>1. 아르바이트 급여 계산</h3>
+    <ol>
+        <li>아르바이트 장소: 입력?</li>
+        <li>근무시간: 입력?</li>
+        <li>시간당 pay: 입력?</li>
+        <li>출력문 > 
+            ${아르바이트 장소}에서 근무한 시간은 총 ${근무시간}이며 총 받을 pay는 ${얼마} 입니다.</li>
+        <li>템플레이트를 활용하여 출력하며, 함수의 리턴을 사용할 것</li>
+    </ol>
+    <h3>2. BMI 지수 계산</h3>
+    <ol>
+        <li>사용자이름, 키, 몸무게 입력</li>
+        <li>출력문은 템플레이트 활용, 함수 리턴 사용할 것</li>
+    </ol>
+<script>
+    // function(parameters)와 arguments의 명칭 사용
+    // function 함수이름(파라미터1, 파라미터2, ...) {
+    //    return `${파라미터1}, ${파라마터2}...`;
+    // }
+    // let 알규먼트1 = x;
+    // let 알규먼트2 = y; ...
+    // 변수 = 함수이름(알규먼트1, 알규먼트2...);
+    // console.log(변수);
+
+    // 1. 아르바이트 급여 계산
+    function calculate(place, time, pay) {
+        //let total = time * pay;
+        //let printCal = `${place}에서 근무한 시간은 총 ${time}시간이며 총 받을 pay는 ${total}원 입니다.`;
+        return `${place}에서 근무한 시간은 총 ${time}시간이며 총 받을 pay는 ${pay * AlbaTime}원 입니다.`;
+    }
+    let AlbaPlace = 'Mr.Pizza';
+    let AlbaTime = 8;
+    let payPerHour = 9000;
+    // 1. console.log(calculate(AlbaPlace, AlbaTime, payPerHour));
+    // 2. let result = printCal('평택', 4, 10000);
+    //    console.log(result);
+    console.log(calculate(AlbaPlace, AlbaTime, payPerHour));
+    console.log(calculate('평택', 4, 10000));
+
+    // 2. BMI 지수 계산
+    function BMI (n, t, w) {
+        return `${n}의 BMI 지수는 ${w / ((t / 100) ** 2)} 입니다.`
+    }
+    let name = 'Son Pilkyu';
+    let tall = 177;
+    let weight = 89;
+    console.log(BMI(name, tall, weight));
+    console.log(BMI('짱구', 145, 27));
+</script>
+</body>
+</html>

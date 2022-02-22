@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>숫자 관련 메서드</title>
+    <link rel="stylesheet" href="" />
+    <style></style>
+  </head>
+  <body>
+    <h1>자바스크립트 숫자관련 메서드: F12</h1>
+    <ul>
+      <li>
+        연산의 기초 데이터로써 계산과 관련된 모든 것은 숫자로 치환되기 마련
+      </li>
+      <li>문자연산보다 숫자연산이 속도가 더 빠르다는 것을 기억하면 좋음</li>
+      <li>
+        숫자관련 메서드는 너무 광범위해서 숫자전용 객체인 Math 클래스로 분류해
+        놓음
+      </li>
+      <li>
+        기본적인 수학지식이 있으면 활용도가 높지만 그렇지 않은 경우 로직을
+        만들어야 함
+      </li>
+    </ul>
+    <script>
+      let num = 1.23456;
+      // return type string -> 결과를 다시 연산하기 위해 숫자로 형변환을 해주는게 좋음.
+      console.log(num.toFixed(3), typeof num.toFixed(3)); // 소수점 자릿수
+      console.log(num.toPrecision(3), typeof num.toPrecision(3)); // 전체 자릿수
+      let cv_num = Number(num.toFixed(3));
+      console.log(cv_num, typeof cv_num);
+      console.log(typeof typeof cv_num); // typeof cv_num의 값은 'number'이고 그걸 또 typeof해서 'number'의 타입인 string을 출력
+
+      let one = 1;
+      let zero = 0;
+      console.log(Boolean(1), Boolean(0)); // true, false
+      console.log(Boolean(1) == 1, Boolean(0) == 0); // true, true
+      console.log(Number(true) == one, Number(false) == zero); // true, true
+
+      Number(true);     // returns 1
+      Number(false);    // returns 0
+      Number("10");     // returns 10
+      Number("  10");   // returns 10
+      Number("10  ");   // returns 10
+      Number(" 10  ");  // returns 10
+      Number("10.33");  // returns 10.33
+      Number("10,33");  // returns NaN
+      Number("10 33");  // returns NaN
+      Number("John");   // returns NaN
+      
+      parseInt("-10");      // returns -10
+      parseInt("-10.33");   // returns -10
+      parseInt("10");       // returns 10
+      parseInt("10.33");    // returns 10
+      parseInt("10 20 30"); // returns 10
+      parseInt("10 years"); // returns 10
+      parseInt("years 10"); // returns NaN
+
+      parseFloat("10");         // returns 10
+      parseFloat("10.33");      // returns 10.33
+      parseFloat("10 20 30");   // returns 10
+      parseFloat("10 years");   // returns 10
+      parseFloat("years 10");   // returns NaN
+
+      Number.MAX_VALUE	            // Returns the largest number possible in JavaScript
+      Number.MIN_VALUE	            // Returns the smallest number possible in JavaScript
+      Number.POSITIVE_INFINITY	    // Represents infinity (returned on overflow)
+      Number.NEGATIVE_INFINITY	    // Represents negative infinity (returned on overflow)
+      Number.NaN	                // Represents a "Not-a-Number" value
+    </script>
+  </body>
+</html>
