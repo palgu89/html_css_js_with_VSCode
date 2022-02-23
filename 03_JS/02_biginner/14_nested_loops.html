@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>중첩 반복문</title>
+<link rel="stylesheet" href="">
+<style></style>
+</head>
+<body>
+<h1>자바스크립트 중첩 반복문: F12</h1>
+<ul>
+    <li>반복문 안에 또 반복문을 사용하는 방식</li>
+    <li>원리는 바깥쪽 반복문이 1번 수행될 때 안쪽 반복문은 처음부터 끝까지 수행</li>
+    <li>구구단을 생각하면 2, 3, 4, ... , 9단을 출력하는건 바깥쪽 반복문</li>
+    <li>각 단의 2~9까지 곱하는 건 안쪽 반복문</li>
+</ul>
+<h3>구구단을 출력해 봅시다! 2 ~ 9단까지</h3>
+<pre>
+    2 x 2 = 4   3 x 2 = 6 ... 9 x 2 = 18
+    ...
+    2 x 9 = 18  3 x 9 = 27 ... 9 x 9 = 81
+</pre>
+<hr>
+<h3>문자데이터를 분석하여 단어 조합하여 새로 생성하기</h3>
+<ul>
+    <li>특정 문자열 뒤 혹은 앞에 문자를 추가하여 새로운 문자데이터를 만드는 방식</li>
+    <li>마케팅이나 광고관련 프로그램에서 많이 사용하며</li>
+    <li>데이터 분석 분야에서 데이터를 원하는 형식으로 전처리 할 때도 많이 사용 됨</li>
+</ul>
+<script>
+    for (let i = 2; i < 10; i++) {
+        console.log(`${i}단`);
+        for (let j = 1; j < 10; j++) {
+            console.log(`${i} x ${j} = ${i * j}`);
+        }
+    }
+    console.log('------------------------');
+    for (let i = 1; i < 10; i++){
+        for(let j = 2; j < 10; j++){
+            console.log(`${j} x ${i} = ${j * i}`);
+        }
+    }
+
+    // Quiz. 중첩 반복문으로 12간지 만들기
+    let ten = '갑,을,병,정,무,기,경,신,임,계';
+    let twelve = '자,축,인,묘,진,사,오,미,신,유,술,해';
+    // 갑자, 갑축, 갑인, 갑묘, 갑진, ..., 계유, 계술, 계해
+    
+    for (let i = 0; i < ten.length; i++) {
+        if (ten[i] === ',') {
+            i++;
+        }
+        let text = '';
+        for (let j = 0; j < twelve.length; j++) {
+            if (twelve[j] === ',') {
+                j++;
+                text += `${ten[i]}${twelve[j]} `;
+            }
+        }
+        console.log(text);
+    }
+</script>
+<script>
+    // 선생님 버전
+    // 구구단
+    // for (let i = 2; i < 10; i++) {
+    //     for (let j = 1; j < 10; j++) {
+    //         console.log(`${i} x ${j} = ${i * j}`);
+    //     }
+    // }
+
+    // 구구단 포맷팅 (한줄로)
+    // for (let i = 1; i < 10; i++) {
+    //     let t = '';
+    //     for (let j = 2; j < 10; j++) {
+    //         t += `${j} x ${i} = ${j * i}\t`
+    //     }
+    //     console.log(t);
+    // }
+
+    // 12간지
+    // for (let i = 0; i < ten.length; i+=2) {
+    //     let line = '';
+    //     for (let j = 0; j < twelve.length; j+=2) {
+    //         line += `${ten.charAt(i)+twelve.charAt(j)}${j < twelve.length-1 ? ', ' : ' '}`;
+    //     }
+    //     console.log(line);
+    // }
+</script>
+</body>
+</html>

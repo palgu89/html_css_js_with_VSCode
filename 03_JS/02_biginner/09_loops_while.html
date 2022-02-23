@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>반복문 while</title>
+<link rel="stylesheet" href="">
+<style></style>
+</head>
+<body>
+<h1>자바스크립트 반복문 while(boolean): F12</h1>
+<ul>
+    <li>while의 구조는 시작값, 반복유지 조건, 실행영역으로 이루어짐</li>
+    <li>반복유지 조건은 if문의 조건과 같은 boolean 타입으로 구성</li>
+    <li>while은 반복의 횟수를 정확하게 정하지 못하거나 정할 필요가 없을 때 사용함</li>
+    <li>do while과의 차이는 while은 조건부 실행, do while은 선실행 후 조건부합 검사</li>
+    <li>조건이 true일떄 계속 반복, false이면 반복을 멈춤(실행영역을 벗어남)</li>
+</ul>
+신우씨의 대답: <input type="text" id="und"><br>
+<button type="submit" id="btn">대답</button><br>
+<hr>
+숫자를 입력하면 2 ~ 9까지 곱해드려요<br>
+숫자: <input type="number" id="mul"><br>
+<button type="submit" id='btn2'>결과</button>
+
+<script>
+    // while문
+    let i = 0;
+    while(i < 10){
+        console.log(++i);
+    }   // 현재의 반복문 형태는 for문을 사용하는 것이 더 바람직함
+    console.log('----------------------');
+    let j = 1;
+    while(j < 11){
+        console.log(j++);
+    }   // 현재의 반복문 형태는 for문을 사용하는 것이 더 바람직함
+    console.log('----------------------');
+
+    let flag = true;
+    let sum = 0;
+    let num = 1;
+    while(flag){
+        console.log(`num값: ${num}`);
+        sum += num;
+        num++;          // num++의 위치에 따라 num 출력값이 달라진다. num값자체의 변경위치는 여기.
+        if(sum >= 1000){
+            flag = false;
+        }
+        console.log(`sum값: ${sum}`);
+    }
+    console.log(sum);
+
+
+    // do while문
+    // 위에서 num은 46, sum은 1035인 상태에서 내려왔다.
+    console.log('-----------------');
+    do{
+        // 선실행 후 조건검사
+        sum += num;
+        if(sum > 2000){
+            flag = flase;
+        }
+        console.log(num, '>', sum);
+        num++;
+    }while(flag);   // while문과 달리 끝에 ; 를 꼭 잊지 말자
+    // 위 while문 예제 때문에 flag가 false임에도 불구하고
+    // do는 찍힌다. 단, 한번 찍히고 while(flag)로 와서 멈춘다.
+    // -> 한번은 무조건 찍힌다. 그 후에 boolean 타입 확인 후 반복 여부 결정
+    
+    console.log('-----------------');
+    let flag2 = true;
+    document.getElementById('btn').addEventListener('click', function(){
+        do{
+            console.log('신우씨의 do-while문 이해하기~');
+            console.log('이해하셨어요?')
+            let ans = document.getElementById('und').value;
+            if(ans =='yes'){
+                flag2 = false;
+                console.log('이해한것을 축하합니다~');
+            }
+            console.log('확인해보고 싶은 라인');
+            debugger;   // 무한루프 걸릴 것을 대비해서 한번 돌려보고 멈춰주는 기능
+        }while(flag2);
+    });
+
+    // 숫자를 입력하면 그 숫자에 2 ~ 9까지 곱한 결과를 출력해보기
+    console.log('-----------------');
+    document.getElementById('btn2').addEventListener('click', function(){
+        let mul = parseInt(document.getElementById('mul').value);
+        let done = true;
+        let i = 2;
+        do{
+            console.log(`${mul} * ${i} = ${mul*i}`);
+            i++;
+            if(i>9){
+                done = false;
+            }
+        }while(done);
+        console.log('-----------------');
+
+        // while(i<10){
+        //     console.log(`${mul} * ${i} = ${mul*i}`);
+        //     i++;
+        // }
+    });
+</script>
+</body>
+</html>

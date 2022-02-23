@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For문을 문자열에 적용해보기</title>
+<link rel="stylesheet" href="">
+<style></style>
+</head>
+<body>
+<h1>
+    자바스트립트 For문 with 문자열: F12
+</h1>
+<ul>
+    <li>index의 시작이 0인 점을 for의 i 값과 매칭하여 사용하는 방식이 흔함</li>
+    <li>문자열의 index를 활용한 메서드들과의 조합도 다양하게 활용 가능</li>
+    <li>데이터의 대부분이 문자열인것을 감안하면 확실하게 이해를 해두는 것이 중요함</li>
+</ul>
+    찾고 싶은 알파벳: <input type="text" id="alpa">
+    <button type="submit" id="btn">확인</button>
+    <hr>
+    <h3>'토마토', '기러기', 'racecar', 'kayak'과 같은 단어를 팰린드롬이라 한다</h3>
+    <h3>위와 같은 단어인지 아닌지 판단하여 해당여부를 리턴하는 함수를 만드세요</h3>
+<script>
+    // 아래에 제시된 para 변수의 문자열 데이터 안에
+    // 내가 찾고자하는 알파벳(x)이 몇 개가 존재하는지 알려주는
+    // 함수를 만들어 x의 총 포함 갯수를 리턴하여 출력하세요
+    document.getElementById('btn').addEventListener('click', function(){    
+    let para = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam tellus, facilisis non tellus consequat, commodo accumsan metus. Ut sodales tincidunt nulla et ornare. Vestibulum in porta metus. Vestibulum in mi feugiat, tristique tortor quis, mattis neque. Pellentesque tristique consectetur lacus non pharetra. Donec mollis, augue a sollicitudin ullamcorper, nisi justo efficitur odio, et maximus erat tortor id tellus. Donec eu lectus pretium, tincidunt dui at, mattis lorem. Cras in varius dui.';
+    let alpa = document.getElementById('alpa').value;
+    let x = 0;
+    for(let i = 0; i < para.length; i++){
+        if (para[i] === alpa) {
+            x++;
+        }
+    }
+    console.log(`${alpa}의 개수는 총 ${x}개 입니다.`);
+    });
+    
+    // 2
+    function isPalindrome(p) {
+        for (let i = 0; i < p.length; i++) {
+            p.charAt(i);
+        }
+        for (let j = p.length; j < 0; j--) {
+            p.charAt(j);
+        }
+        if (p.charAt(i) === p.charAt(j)) {
+            return true;           
+        }
+        else {
+            return false;
+        }
+    }
+    // 테스트 코드
+    console.log(isPalindrome('토마토'));        // true
+    console.log(isPalindrome('기러기'));        // true
+    console.log(isPalindrome('centers'));       // false
+    console.log(isPalindrome('ajax'));          // false
+    console.log(isPalindrome('racecar'));       // true
+    console.log(isPalindrome('jasmins'));       // false
+    console.log(isPalindrome('kayak'));         // true
+    
+</script>
+<script>
+    // 선생님 버전
+    // function searchAlpha(x) {
+    //     let para = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam tellus, facilisis non tellus consequat, commodo accumsan metus. Ut sodales tincidunt nulla et ornare. Vestibulum in porta metus. Vestibulum in mi feugiat, tristique tortor quis, mattis neque. Pellentesque tristique consectetur lacus non pharetra. Donec mollis, augue a sollicitudin ullamcorper, nisi justo efficitur odio, et maximus erat tortor id tellus. Donec eu lectus pretium, tincidunt dui at, mattis lorem. Cras in varius dui.';
+    //     let cnt = 0;
+    //     for (let i = 0; i < para.length; i++) {
+    //         if(para.charAt(i) == x){    // para[i]도 되지만 나중에 배열과 혼동 될 수 있기에 문자열을 찾아주는 charAt()메서드를 쓰자
+    //             cnt++;
+    //         }
+    //     }
+    //     return cnt;
+    // }
+    // let alpha = 'a';
+    // console.log(`찾고자 하는 ${alpha}의 포함갯수는 ${searchAlpha('a')}입니다.`);
+
+    // 2
+    // function isPalindrome(word){
+    //     let len = Math.floor(word.length / 2);   // 이렇게 하면 반만 돌게 됨. 성능적으로 좋아짐.
+    //     -> 이렇게 안하고 그냥 word.length로 하면 1vs마지막, 2vs마지막-1 ... 마지막vs1까지 돌으므로 똑같은걸 두번 돌게 된다.
+    //     for(let i = 0; i < len; i++){
+    //         if(word.charAt(i) != word.charAt(word.length-1-i)){     // 처음꺼 vs 마지막꺼 , 두번째꺼 vs 마지막에서 두번째꺼 ...
+    //             return false;
+    //         }
+    //     }
+    //     return true;
+    // }
+</script>
+</body>
+</html>

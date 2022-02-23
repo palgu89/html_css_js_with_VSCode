@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For 반복문</title>
+<link rel="stylesheet" href="">
+<style></style>
+</head>
+<body>
+<h1>자바스크립트 반복문 FOR: F12</h1>
+<ul>
+    <li>for문은 총 standard for, for of, for in으로 3개가 존재</li>
+    <li>standard for를 다룰 것입니다</li>
+    <li>for (let i =시작값; i 〈 조건; i++) {실행영역}</li>
+    <li>for(초기화; 조건부; 증감식) {실행영역}</li>
+</ul>
+<script>
+    let myName = 'Son pilkyu';
+    let yourName = 'Lim Jeongmin'
+    console.log(myName.length);     // 10
+    for (let i = 0; i < myName.length; i++) {
+        console.log(myName[i]);
+    }
+    for (let i = 0; i < myName.length; i++) {
+        for (let j = 0; j < yourName.length; j++) {
+            console.log(yourName[i]);
+        }        
+    }
+    for (let i = 10; i > 0; i--) {
+        console.log(i);
+    }
+
+    // for문을 사용하여 1부터 정수 n값까지 짝수의 합을 출력하세요
+    let n = 456;
+    let sum = 0;
+    for (let i = 0; i < n; i++) {
+        if (i % 2 == 0) {
+            sum += i;
+        }
+    }
+    console.log(`1부터 ${n}까지의 짝수의 합은 ${sum}입니다`);
+</script>
+</body>
+</html>

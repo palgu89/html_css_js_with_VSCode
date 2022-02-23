@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>조건문 최종 연습</title>
+<link rel="stylesheet" href="">
+<style></style>
+</head>
+<body>
+<h1>근로소득세 예상해보기</h1>
+<ul>
+    <li>여러분의 총 근로소득을 입력(연봉)</li>
+    <li>근로소득 기본공제(실제소득에 준하는 금액으로 세금을 납부하기 위해 공제하는 금액)</li>
+    <li>총 근로소득 - 기본공제 = 과세표준</li>
+    <li>과세표준에 적용된 세율을 계산하는 시스템을 만들어보기</li>
+    <li>2021년도 세율을 구글에서 찾아서 적용</li>
+</ul>
+    근로소득 = <input type="number" id="pay">원<br>
+    기본공제 = <input type="number" id="spend">원<br>
+    <button type="submit" id="btn">세율 계산</button>
+<script>
+    document.getElementById('btn').addEventListener('click', function () {
+        let pay = parseInt(document.getElementById('pay').value);
+        let spend = parseInt(document.getElementById('spend').value);
+        let std = pay - spend;
+        function tax(s) {
+            if(s <= 12000000){
+                return `귀하의 세금은 ${(s*0.06)-0}원입니다.`;
+            }
+            else if(s > 12000000 && s <= 46000000){
+                return `귀하의 세금은 ${(s*0.15)-1080000}원입니다.`;
+            }
+            else if(s > 46000000 && s <= 88000000){
+                return `귀하의 세금은 ${(s*0.24)-5220000}원입니다.`;
+            }
+            else if(s > 88000000 && s <= 150000000){
+                return `귀하의 세금은 ${(s*0.35)-14900000}원입니다.`;
+            }
+            else if(s > 150000000 && s <= 300000000){
+                return `귀하의 세금은 ${(s*0.38)-19400000}원입니다.`;
+            }
+            else if(s > 300000000 && s <= 500000000){
+                return `귀하의 세금은 ${(s*0.4)-25400000}원입니다.`;
+            }
+            else if(s > 500000000 && s <= 1000000000){
+                return `귀하의 세금은 ${(s*0.42)-35400000}원입니다.`;
+            }
+            else if(s > 1000000000){
+                return `귀하의 세금은 ${(s*0.45)-65400000}원입니다.`;
+            }
+            else {
+                return `금액을 제대로 입력해주세요.`;
+            }
+        }
+        console.log(`근로소득은 ${pay}원이시고`);
+        console.log(`기본소득은 ${spend}원이시면`);
+        console.log(tax(std));
+    });
+</script>
+</body>
+</html>

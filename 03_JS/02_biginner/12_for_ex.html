@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For문 연습</title>
+  </head>
+  <body>
+    <h1>자바스크립트 For문 연습</h1>
+    <ul>
+      <li>1. 정수 n을 입력 받으면 n의 높이만큼 직각삼각형을 *로 만들어보기</li>
+      <li>2. 가위바위보를 10번 진행시켜 본인의 승률을 출력해보세요</li>
+      <li>승률 = 승리의 수 / (전체 게임 수 - 무승부)</li>
+      <li>3. 로또 1등에 당첨될 확률은 얼마나 될까요?
+          <ol>
+              <li>1 ~ 45의 숫자중 6개의 번호가 일치 해야 합니다</li>
+              <li>1개의 숫자가 일치할 확률은?</li>
+              <li>1개의 숫자가 일치한 후 2번째 숫자가 일치할 확률은?</li>
+              <li>6개의 개별 숫자는 중복되지 않으므로 개별숫자의 일치확률은 진행이 될 수록 높아지지만</li>
+              <li>6개의 숫자 모두 일치할 확률은 각 숫자의 일치확률을 모두 곱하면 된다</li>
+          </ol>
+      </li>
+    </ul>
+    <pre>
+    ex) n =5 일때
+    *
+    **
+    ***
+    ****
+    *****
+    </pre>
+    n 입력: <input type="number" id="n" /><br />
+    <button type="submit" id="btn">결과</button>
+    <hr />
+    <!-- 가위바위보: <input type="text" id="RSP">
+    <button type="submit" id="btn2">결과</button> -->
+    <script>
+      // 1
+      document.getElementById("btn").addEventListener("click", function () {
+        let n = parseInt(document.getElementById("n").value);
+        let triangle = "";
+        for (let i = 0; i <= n; i++) {
+          for (let j = 1; j <= i; j++) {
+            triangle += "*";
+          }
+          triangle += "\n";
+        }
+        console.log(triangle);
+      });
+
+      // 2
+      let draw = 0;
+      let win = 0;
+      for (let i = 0; i < 10; i++) {
+        let myRSP = Math.floor(Math.random() * 3) + 1;
+        let comRSP = Math.floor(Math.random() * 3) + 1;
+        if (myRSP == 1) {
+          myRSP = "가위";
+        } else if (myRSP == 2) {
+          myRSP = "바위";
+        } else {
+          myRSP = "보";
+        }
+
+        if (comRSP == 1) {
+          comRSP = "가위";
+        } else if (comRSP == 2) {
+          comRSP = "바위";
+        } else {
+          comRSP = "보";
+        }
+
+        if (myRSP === "가위") {
+          if (comRSP === "가위") {
+            console.log("비겼음");
+            draw++;
+          } else if (comRSP === "바위") {
+            console.log("졌음");
+          } else {
+            console.log("이겼음");
+            win++;
+          }
+        } else if (myRSP === "바위") {
+          if (comRSP === "가위") {
+            console.log("이겼음");
+            win++;
+          } else if (comRSP === "바위") {
+            console.log("비겼음");
+            draw++;
+          } else {
+            console.log("졌음");
+          }
+        } else {
+          if (comRSP === "가위") {
+            console.log("졌음");
+          } else if (comRSP === "바위") {
+            console.log("이겼음");
+            win++;
+          } else {
+            console.log("비겼음");
+            draw++;
+          }
+        }
+      }
+      console.log(`당신의 승률은 ${win / (10 - draw)}`);
+
+      // 3
+      let lotto = 1;
+      let num = 1;
+      let j = 6;
+      for (let i = 40; i < 46; i++) {
+          lotto *= i;
+          num *= j;
+          j--;
+      }
+      console.log(`로또 당첨 확률은 ${num / lotto} 입니다`);
+    </script>
+    <script>
+      // 선생님 버전
+      // 1
+      // function makeStars(n){
+      //     let stars = '';
+      //     for (let i = 0; i < n; i++) {
+      //         stars += '*';
+      //         console.log(stars);
+      //     }
+      // }
+      // makeStars(3);
+      // console.log('---------------------');
+      // makeStars(5);
+      // console.log('---------------------');
+      // makeStars(9);
+      // console.log('---------------------');
+      // makeStars(15);
+      // console.log('---------------------');
+
+      // 2
+      // let win = 0;
+      // let draw = 0;
+      // let lose = 0;
+
+      // for(let i = 0; i< 10; i++){
+      //     let myChoice = Math.floor(Math.random()*3);   // 0, 1, 2
+      //     let comChoice = Math.floor(Math.random()*3);   // 0, 1, 2
+
+      //     switch(myChoice) {
+      //       case 0:   // 가위
+      //           comChoice==0 ? draw++ : comChoice==1 ? lose++ : win++;
+      //           break;
+      //       case 1:   // 바위
+      //           comChoice==1 ? draw++ : comChoice==2 ? lose++ : win++;
+      //           break;
+      //       case 2:   // 보
+      //           comChoice==2 ? draw++ : comChoice==0 ? lose++ : win++;
+      //           break;
+      //     }
+      // }
+      //   console.log(`당신의 승률은 ${(win / (10 - draw) * 100).toPrecision(3)}% 입니다.`);
+
+      // 3
+      let t = 1;
+      let s = 1;
+      for (let i = 0; i < 6; i++) {
+          s *= (6 - i); // 또는 s *= (i + 1);
+          t *= (45 - i);
+      }
+      console.log(`로또 1등 당첨 확률은 1 / ${t / s} 입니다`);  // s/t -> s/s / t/s -> 1 / t/s
+    </script>
+  </body>
+</html>

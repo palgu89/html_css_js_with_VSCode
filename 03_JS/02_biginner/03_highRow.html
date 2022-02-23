@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>High Row</title>
+<link rel="stylesheet" href="">
+<style></style>
+</head>
+<body>
+<h1>High Row Number</h1>
+<h3>0 ~ 99 사이의 숫자를 입력하세요</h3>
+<input type="number" id="myNum" min="0" max="99">
+<button type="button" id="btn">확인</button>
+<script>
+    let comNum = Math.floor(Math.random()*100); // 0 ~ 99까지 숫자를 랜덤으로 배정
+    let tries = 0;  // 여기다 선언하지 않고 document 안에 선언하면 실행 할때 마다 0이 됨.
+    let i = 0;
+    document.getElementById('btn').addEventListener('click', function() {
+        let myNum = document.getElementById('myNum').value;
+        // 컴퓨터의 숫자를 내가 예측합니다
+        // 내 숫자가 컴퓨터의 숫자보다 크면 -> 더 작은 수를 입력하세요!
+        // 내 숫자가 컴퓨터의 숫자보다 작으면 -> 더 큰 수를 입력하세요!
+        // 내가 총 시도한 누적횟수도 출력하기
+        
+        if(myNum == comNum) {
+            console.log(`정답입니다`);
+        }
+        else if(myNum > comNum) {
+            console.log(`더 작은 수를 입력하세요`);
+        }
+        else {
+            console.log(`더 큰 수를 입력하세요`);
+        }
+        i++;
+        console.log(`총 시도한 누적횟수는 ${i}회 입니다`);
+
+
+        // 선생님 버전
+        // console.log(typeof myNum);
+        // // myNum의 타입을 typeof로 출력하면 string인 것을 알수 있다. 따라서 parseInt 해줌
+        // if(comNum > parseInt(myNum)) {      
+        //     console.log(` 더 큰 숫자를 입력하세요!`);
+        // }
+        // else if(comNum < parseInt(myNum)) {
+        //     console.log(`더 작은 숫자를 입력하세요!`);
+        // }
+        // else {
+        //     console.log(`맞추셨네요!`);
+        // }
+
+        // console.log('----------------------------');
+        // ternary operator
+        // console.log(`${comNum == parseInt(myNum) ? '맞추셨네요!'
+        //                  : comNum > parseInt(myNum) ? '더 큰 숫자를 입력하세요!'
+        //                  : '더 작은 숫자를 입력하세요!'}`);
+
+        // console.log('----------------------------');
+        // function 화
+        // let mn = document.getElementById('myNum').value);    // 이걸 그냥 function 안 mn에 넣어도 됨
+        // function judge(cn, mn) {                             // 그럼 여기 mn이 사라지고
+        //      let c = parseInt(cn);
+        //      let m = parseInt(mn);                           // 여기 mn 대신 docu~ 가 들어감
+        //      return c == m ? '맞추셨네요!'
+        //              : c > m ? '더 큰 숫자를 입력하세요!'
+        //              : '더 작은 숫자를 입력하세요!';  
+        // }
+        // console.log(judge(comNum, myNum));
+
+        // tries++;
+        // console.log(`시도 누적 횟수: ${tries}`);
+    });
+</script>
+</body>
+</html>

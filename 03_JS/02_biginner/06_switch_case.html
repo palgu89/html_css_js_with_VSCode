@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Switch Case Clause</title>
+<link rel="stylesheet" href="">
+<style></style>
+</head>
+<body>
+<h1>switch case문은 if - else if - else문과 비슷한 형태의 조건문</h1>
+<ul>
+    <li>switch(값) : true/false가 아닌 특정 값 -> 비교연산한다</li>
+    <li>각 조건은 case 가능성의 값: 수행코드 break; 형태를 여러개로 만듦</li>
+    <li>else문과 같은 역할은 default: 수행코드 break;를 사용한다</li>
+</ul>
+<h3>학생의 국, 영, 수 점수를 입력하세요</h3>
+국어 점수: <input type="number" id="kor"><br>
+영어 점수: <input type="number" id="eng"><br>
+수학 점수: <input type="number" id="math"><br>
+<button type="button" id="btn">성적확인</button>
+<script>
+    document.getElementById('btn').addEventListener('click', function() {
+    let kor = parseInt(document.getElementById('kor').value);
+    let eng = parseInt(document.getElementById('eng').value);
+    let math = parseInt(document.getElementById('math').value);
+
+    // 국영수 점수를 입력받아서 평균점수를 계산한 후
+    // 90 이상 A, 80이상 B, 70이상 C, 60이상이면 D, 미만은 F를 출력하세요
+    // 반드시 switch문을 사용할 것
+
+    // let avg = parseInt(((kor + eng + math) / 3).toFixed(0));
+    // switch (avg) {
+    //     case 100:
+    //     case 99:
+    //     case 98:
+    //     case 97:
+    //     case 96:
+    //     case 95:
+    //     case 94:
+    //     case 93:
+    //     case 92:
+    //     case 91:
+    //     case 90:
+    //             console.log(`당신의 성적은 ${avg}, A 입니다.`);
+    //             break;
+    //     case 99:
+    //     case 88:
+    //     case 87:
+    //     case 86:
+    //     case 85:
+    //     case 84:
+    //     case 83:
+    //     case 82:
+    //     case 81:
+    //     case 80:
+    //             console.log(`당신의 성적은 ${avg}, B 입니다.`);
+    //             break;
+    //     case 79:
+    //     case 78:
+    //     case 77:
+    //     case 76:
+    //     case 75:
+    //     case 74:
+    //     case 73:
+    //     case 72:
+    //     case 71:
+    //     case 70:
+    //             console.log(`당신의 성적은 ${avg}, C 입니다.`);
+    //             break;
+    //     case 69:
+    //     case 68:
+    //     case 67:
+    //     case 66:
+    //     case 65:
+    //     case 64:
+    //     case 63:
+    //     case 62:
+    //     case 61:
+    //     case 60:
+    //             console.log(`당신의 성적은 ${avg}, D 입니다.`);
+    //             break;
+    //     default:
+    //         console.log(`당신의 성적은 ${avg}, F 입니다.`);
+    //         break;
+    // }
+
+    // 선생님 버전
+    let total = kor + eng + math;
+    let avg = parseInt(((total/3)/10).toFixed(1));
+    console.log((total/3).toFixed(2));
+    switch(avg){
+        case 9:
+            console.log('A');
+            break;
+        case 8:
+            console.log('B');
+            break;
+        case 7:
+            console.log('C');
+            break;
+        case 6:
+            console.log('D');
+            break;
+        default:
+            console.log('F');
+            break;
+    }
+    });
+
+
+    console.log('----------------------------');
+    let blood = 'O';
+    switch(blood){  // type을 정확히 판단해서 값을 배정해야 함
+        case 'A' :  // if문과 비교를 하면 얘는 if
+            // code
+            break;
+        case 'B':   // else if
+            // code
+            break;
+        case 'AB':  // else if
+            // code
+            break;   
+        case 'O':   // else if
+            // code
+            break;
+        default:    // else
+            // code
+            break; 
+    }
+
+    let subject = 'CSS';
+    // if(subject == 'CSS' || subject == 'JS' || subject =='HTML')와 같은 의미
+    switch (subject) {
+        case 'HTML':
+        case 'CSS':
+        case 'JS':
+            console.log('Front-End');
+        case 'JAVA':
+        case 'JSP':
+        case 'Spring':
+            console.log('Back-End');
+        case 'MySQL':
+        case 'oracle':
+            console.log('Database');
+        default:
+            console.log('위의 값이 모두 만족하지 못함')
+            break;
+    }
+
+</script>
+</body>
+</html>
