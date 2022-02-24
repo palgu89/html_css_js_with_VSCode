@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>객체 정렬 연습</title>
+</head>
+<body>
+<h1>자바스크립트 객체들 정렬: F12</h1>
+<ul>
+    <li>객체들을 정렬할 때 는 객체의 어떤 property를 기준으로 정렬할 것인가를 먼저 선택</li>
+    <li>문자와 숫자의 정렬 방법은 조금 차이가 있지만 원리는 흡사함</li>
+    <li>객체간 정렬도 프로퍼티의 값을 기준으로 정렬해야 하므로</li>
+    <li>정렬을 할 객체들은 기준이 되는 프로퍼티를 모두 갖고 있어야 함</li>
+</ul>
+<button type="button" id="name">name으로 정렬하기</button>
+<button type="button" id="age">age으로 정렬하기</button>
+<button type="button" id="favors">favors으로 정렬하기</button>
+<script>
+    // 객체들 정렬하기
+    const memberList = [
+        {name: 'A', age: 19, favors: '6'},
+        {name: 'G', age: 34, favors: '10'},
+        {name: 'Z', age: 48, favors: '7'},
+        {name: 'T', age: 26, favors: '3'},
+        {name: 'E', age: 55, favors: '9'}
+    ];
+    // name으로 정렬하기. 버튼을 클릭하면 name순으로 객체를 정렬
+    document.getElementById('name').addEventListener('click', function(){
+        memberList.sort(function(a, b){
+            let x = a.name.toLowerCase();
+            let y = b.name.toLowerCase();
+            if (x < y){
+                return -1;
+            }
+            if (x > y){
+                return 1;
+            }
+            return 0;
+        });
+        console.log(memberList);
+    });
+
+    // age으로 정렬하기. 버튼을 클릭하면 age순으로 객체를 정렬
+    document.getElementById('age').addEventListener('click', function(){
+        memberList.sort(function(a, b){
+            return a.age - b.age;
+        });
+        console.log(memberList);
+    });
+
+    // favors으로 정렬하기. 버튼을 클릭하면 favors순으로 객체를 정렬
+    document.getElementById('favors').addEventListener('click', function(){
+        memberList.sort(function(a, b){
+            let w = parseInt(a.favors.toLowerCase());
+            let z = parseInt(b.favors.toLowerCase());
+            return w - z;
+        });
+        console.log(memberList);
+    });
+</script>
+
+</body>
+</html>

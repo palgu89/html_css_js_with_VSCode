@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>배열의 메서드</title>
+</head>
+<body>
+<h1>자바스크립트 배열 메서드: F12</h1>
+<ul>
+    <li>배열 전용 메서드로써 배열이 아닌 객체나 유사배열 타입에서는 사용할 수 없음</li>
+    <li>삽입, 조회, 수정, 삭제 관련 메서드를 통해 배열을 편리하게 사용함</li>
+    <li>메서드의 파라미터와 리턴이 차이가 있으므로 잘 정리해서 알아두어야 함</li>
+    <li>자바스크립트는 배열의 활용빈도가 매우 높기 때문에 메서드 또한 많이 사용 됨</li>
+</ul>
+<script>
+    const fruits = ["Banana", "Orange", "Apple", "Mango"];
+    
+    // 배열의 마지막 요소를 제거, 제거한 요소를 리턴함
+    fruits.pop();   // Removes "Mango" from fruits
+    console.log(fruits);
+    // const인데 수정할 수 있는 이유는 주소값을 안바꾸고 주소값 안의 값을 수정하기 때문
+
+    // 배열의 마지막에 요소를 추가 한 후 배열의 길이를 리턴함
+    fruits.push('PineApple');
+    console.log(fruits);    // let x = fruits.push() 하면 x = 4
+
+    // 배열의 첫 요소를 제거, 제거한 요소를 리턴함. vs pop()
+    fruits.shift();
+    console.log(fruits);
+
+    // 배열의 첫 요소 추가, 새로 추가한 요소를 포함한 배열의 길이를 리턴함. vs push()
+    fruits.unshift('Grape');
+    console.log(fruits);    // 4
+
+    // 배열 자르기(인덱스, 갯수), 도려낸 배열을 리턴함
+    fruits.splice(2, 1);    // 2번 인덱스부터 1개를 지운다.
+    console.log(fruits);
+    // 배열 자른 후, 새로운 요소 삽입 가능
+    fruits.splice(2, 0, "Leamon", "Kiwi");  // 2번 인덱스부터 0개만큼 지운 후, 그 자리를 leamon과 kiwi가 채운다.
+    console.log(fruits);
+    // 파라미터가 1개이면 인덱스 번호부터 끝까지
+    // 배열의 해당 인덱스로부터 마지막까지 도려내고 배열을 리턴함
+    let x = fruits.splice(3);
+    console.log(x);
+    console.log(fruits);
+
+    // 배열 추출하기 (원본 배열 변경 없음)
+    // 파라미터가 1개이면 해당 인덱스로부터 끝까지 추출
+    let y = fruits.slice(1);
+    console.log(y);
+    console.log(fruits);    // 원본 손상 x
+    // 파라미터가 2개(slice(1,3)이면 1번 인덱스부터 3번 인덱스 앞(3번 미포함)까지 추출하여 배열로 리턴
+    let z = fruits.slice(0, 2);
+    console.log(z);
+    console.log(fruits);    // 원본 손상 x
+
+    // 문자와 배열 메서드의 활용
+    // 배열 -> 문자
+    let arrToStr = fruits.toString();
+    console.log(typeof arrTostr, arrToStr);
+
+    // 문자 -> 배열
+    let reArr = arrToStr.split(',');    // ,를 기준으로 분리시켜 배열로 만듦
+    let reArr2 = arrToStr.split('');    // ''을 기준으로 분리시켜 배열로 만듦
+    console.log(reArr);     // 과일 종류대로 분리 시킴
+    console.log(reArr2);    // 알파벳 하나하나 분리 시킴
+</script>
+</body>
+</html>
