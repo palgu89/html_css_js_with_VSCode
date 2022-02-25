@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2번</title>
+</head>
+<body>
+    <h1>2. 조건을 참고 및 추리하여 코드를 작성해보세요.</h1>
+    <ul>
+        <li>a. 크기가 6인 정수형 배열 subject 초기화 하기</li>
+        <li>b. 6개 과목 점수 입력 받고 출력</li>
+        <li>c. 합계(sum)와 평균(avg) 출력</li>
+        <li>d. 평균 > 90,80,70,60 초과이면 A,B,C,D 등급으로 출력</li>
+        <li>e. 60이하 이면 F 등급으로 출력</li>
+    </ul>
+    6개 과목 점수:<br>
+    수학: <input type="number" id="score1">점<br>
+    영어: <input type="number" id="score2">점<br>
+    국어: <input type="number" id="score3">점<br>
+    과학: <input type="number" id="score4">점<br>
+    미술: <input type="number" id="score5">점<br>
+    음악: <input type="number" id="score6">점<br>
+    <button type="submit" id="btn">제출</button>
+<script>
+    document.getElementById('btn').addEventListener('click', function(){
+        let score1 = parseInt(document.getElementById('score1').value);
+        let score2 = parseInt(document.getElementById('score2').value);
+        let score3 = parseInt(document.getElementById('score3').value);
+        let score4 = parseInt(document.getElementById('score4').value);
+        let score5 = parseInt(document.getElementById('score5').value);
+        let score6 = parseInt(document.getElementById('score6').value);
+
+        let score = [score1, score2, score3, score4, score5, score6];
+        let subject = [];
+        
+        // 점수 출력
+        for (let i = 0; i < 6; i++) {
+            subject += `${score[i]} `;
+        }
+        console.log(subject);
+
+        // sum, avg 출력
+        let sum = 0;
+        let avg = 0;
+        for (let i = 0; i < score.length; i++) {
+            sum += score[i];
+            avg += score[i];
+        }
+        avg /= 6;
+        console.log(`6 과목의 총점은 ${sum}점이며, 평균은 ${avg.toFixed(2)}점 입니다.`);
+
+        // 평균 90, 80, 70, 60 -> A, B, C, D
+        if (avg > 90) {
+            console.log(`당신의 학점은 A입니다.`);
+        }
+        else if (avg <= 90 && avg > 80) {
+            console.log(`당신의 학점은 B입니다.`);
+        }
+        else if (avg <= 80 && avg > 70) {
+            console.log(`당신의 학점은 C입니다.`);
+        }
+        else if (avg <= 70 && avg > 60) {
+            console.log(`당신의 학점은 D입니다.`);
+        }
+        else{
+            console.log(`당신의 학점은 F입니다.`);
+        }
+    });
+</script>
+    <button type="button" id="btnT">입력란 만들기</button>
+    <ul id="ul"></ul>
+    <button type="button" id="cal">점수 계산하기</button>
+    <ul id="result"></ul>
+<script>
+    // 선생님 버전
+    function makeInputs(){
+        let ul = document.getElementById('ul');
+        for (let i = 0; i < 6; i++) {
+            ul.innerHTML += '<li>과목'+(i+1)+': <input type="number" id="in_'+i+'"></li>';
+        }
+
+    }
+    document.getElementById('btnT').addEventListener('click', makeInputs);  // 내가 클릭하면 미리 정해놓은 makeInputs 메서드가 실행 됨
+
+    document.getElementById('cal').addEventListener('click', function(){
+        let subjects = [];
+        let sum = 0;
+        for (let i = 0; i < 6; i++) {
+            subjects[i] = parseInt(document.getElementById('in_'+i).value);
+            sum += subjects[i];
+        }
+        console.log(`총점: ${sum}`);
+        
+        let avg = sum / subjects.length;
+        console.log(`평균: ${avg}`);
+
+        console.log(`등급: ${avg > 90 ? 'A' : avg > 80 ? 'B' : avg > 70 ? 'C' : avg > 60 ? 'D' : 'F'}`);
+
+        // html에 내보내기
+        let grade = avg > 90 ? 'A' : avg > 80 ? 'B' : avg > 70 ? 'C' : avg > 60 ? 'D' : 'F';    // grade엔 하나의 값만 들어감
+        document.getElementById('result').innerHTML = `<li>총점: ${sum}</li>`;
+        document.getElementById('result').innerHTML = '<li>평균: '+avg+'</li>';
+        document.getElementById('result').innerHTML = '<li>등급: '+grade+'</li>';
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3번</title>
+</head>
+<body>
+<h2>
+<pre>
+    3. 문자데이터를 분석하여 단어 조합하여 새로 생성하기 특정 문자열 뒤
+    
+    혹은 앞에 문자를 추가하여 새로운 문자데이터를 만드는 방식
+    
+    마케팅이나 광고관련 프로그램에서 많이 사용하며 데이터 분석 분야에서
+    
+    데이터를 원하는 형식으로 전처리 할 때도 많이 사용됨
+    
+    substring, slice, replace 메서드 활용하면 좋아요~ 
+    
+    중첩반복문 활용하지 않아도 해결 가능
+    
+    
+    strData의 개발자라는 단어 뒤에 '-백엔드'를 추가,
+    
+    관리자라는 단어 뒤에 '-고생하세요'를 추가
+    
+    위의 조건에 맞게 코드를 새로운 newData라는 변수에 저장해보기
+    
+    let strData = '자바개발자, 웹개발자, 앱개발자, 시스템관리자, 서버관리자';
+    
+    let newData = '자바개발자-백엔드, 웹개발자-백엔드, 앱개발자-백엔드,'
+    
+                   + '시스템관리자-고생하세요, 서버관리자-고생하세요';
+</pre>
+</h2>
+<script>
+    let strData = '자바개발자, 웹개발자, 앱개발자, 시스템관리자, 서버관리자';
+    let newData = '';    
+    for (let i = 0; i < strData.length; i++) {
+        if (i == 4) {
+            newData += strData.slice(0, 5);
+            newData += '-백엔드, ';       
+        }
+        if (i == 10){
+            newData += strData.slice(7, 10);
+            newData += '-백엔드, ';
+        }
+        if (i == 16) {
+            newData += strData.slice(13, 16);
+            newData += '-백엔드, ';
+        }
+        if (i == 24) {
+            newData += strData.slice(19, 24);
+            newData += '-고생하세요, ';
+        }
+        if (i == 31) {
+            newData += strData.slice(27, 31);
+            newData += '-고생하세요';
+        }
+    }
+    console.log(newData);
+</script>
+<h3 id="result"></h3>
+<script>
+    // 선생님 버전
+    let newDataT = '';
+    function changeData(str){
+        for (let i = 0; i < str.length; i++) {
+            let keyword = str.substr(i, 3);
+            let word = '';
+
+            switch (keyword) {
+                case '개발자':
+                    word = keyword.replace('개발자', '개발자-백엔드');
+                    newDataT += word;
+                    i += 2;
+                    break;
+                case '관리자':
+                    word = keyword.replace('관리자', '관리자-수고하세요');
+                    newDataT += word;
+                    i += 2;
+                    break;
+                default:
+                    newDataT += keyword.charAt(0);
+                    break;
+            }
+        }
+        return newDataT;
+    }
+    let strDataT = '자바개발자, 웹개발자, 앱개발자, 시스템관리자, 서버관리자';
+    console.log(changeData(strDataT));
+
+    // 정규식 사용
+    let newDataRegEx = strDataT.replace(/개발자/gi, '개발자-백엔드');
+    newDataRegEx = newDataRegEx.replace(/관리자/gi, '관리자-수고하세요');
+    console.log(newDataRegEx);
+</script>
+</body>
+</html>

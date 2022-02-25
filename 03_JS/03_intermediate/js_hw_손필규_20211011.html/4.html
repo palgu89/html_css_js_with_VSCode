@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4번</title>
+</head>
+<body>
+    <h1><pre>
+4. 범위의 시작 지점(start), 끝 지점(end),
+
+그리고 증가폭(step)을 파라미터로 받고,
+
+그에 해당하는 배열을 리턴해주는 함수 range를 작성해주세요.
+
+// 결과 예시
+
+console.log(range(1, 6, 1));
+console.log(range(3, 10, 2));
+console.log(range(10, -10, -4));
+
+[1, 2, 3, 4, 5] [3, 5, 7, 9] [10, 6, 2, -2, -6]
+    </pre></h1>
+<hr>
+시작지점: <input type="number" id="start"><br>
+끝지점: <input type="number" id="end"><br>
+증가폭: <input type="number" id="step">
+<button type="submit" id="btn">확인</button>
+<script>
+    document.getElementById('btn').addEventListener('click', function(){
+        let start = parseInt(document.getElementById('start').value);
+        let end = parseInt(document.getElementById('end').value);
+        let step = parseInt(document.getElementById('step').value);
+        
+        function range(a, b, c){
+            let ranArray = [];
+                for (let i = 1; i < ((b-a)/c)+1; i++) {
+                    ranArray[i-1] = a+(i-1)*c;
+                }
+                return ranArray;
+        }
+
+        console.log(range(start, end, step));
+    });
+</script>
+<script>
+    // 선생님 버전
+    function rangeT(start, end, step){
+        let arr = [];
+        if(start < end){     // 순차 증가
+            for(let i = start; i < end; i+=step){
+                arr[arr.length] = i;
+            }
+        }else{  // 역순 감소
+            for (let i = start; i > end; i+=step) {
+                arr[arr.length] = i;
+            }
+        }
+        return arr;
+    }
+    console.log(`함수 적용 결과: ${rangeT(10, 10, -3).toString()}`);
+    console.log(`함수 적용 결과: ${rangeT(1, 10, 1).toString()}`);
+    console.log(`함수 적용 결과: ${rangeT(10, 50, 10).toString()}`);
+    console.log(`함수 적용 결과: ${rangeT(1, 10).toString()}`);
+    // -> function range(start, end, step=1)로 해놓으면 step을 빼먹어도 1로 넣어준다
+
+</script>
+</body>
+</html>
+
+<!-- start+(n-1)*step = end
+
+(n-1)*step = end - start
+
+n-1 = (end - start) / step
+
+n = ((end - start) /step) + 1
+
+for (let i=start;i <(end - start)/step + 1;i+=step) -->

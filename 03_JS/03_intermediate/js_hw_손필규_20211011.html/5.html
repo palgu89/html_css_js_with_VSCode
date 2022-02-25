@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5번</title>
+</head>
+<body>
+    <h1><pre>
+5. 아래의 배열에 있는 이름의 갯수를 객체형식으로 저장한 후 출력해 주세요;
+        
+let members = ['김아연', '김태형', '김태형', '주혁중', '손필규',
+'김태형', '손필규', '김태형', '김호중', '주혁중', '김태형',
+'임정민', '김아연', '김태형', '김호중', '손필규', '손필규',
+'임정민', '김태형', '김태형', '김태형', '손필규', '손필규',
+'김태형', '김아연', '김태형', '김호중', '김태형', '손필규',
+'임정민'];
+
+// 결과 출력 예시
+
+// {'김태형':15, '손필규': 9,....}
+    </pre></h1>
+<script>
+    let members = ['김아연', '김태형', '김태형', '주혁중', '손필규',
+'김태형', '손필규', '김태형', '김호중', '주혁중', '김태형',
+'임정민', '김아연', '김태형', '김호중', '손필규', '손필규',
+'임정민', '김태형', '김태형', '김태형', '손필규', '손필규',
+'김태형', '김아연', '김태형', '김호중', '김태형', '손필규',
+'임정민'];
+let son = 0;
+let lim = 0;
+let ah = 0;
+let tae = 0;
+let ju = 0;
+let ho = 0;
+for (let i = 0; i < members.length; i++) {
+    switch (members[i]) {
+        case '손필규':
+            son++;
+            break;
+        case '임정민':
+            lim++;
+            break;
+        case '김아연':
+            ah++;
+            break;
+        case '김태형':
+            tae++;
+            break;
+        case '주혁중':
+            ju++;
+            break;
+        case '김호중':
+            ho++;
+            break;
+        default:
+            break;
+    }
+}
+const countName = {
+    '손필규': son,
+    '임정민': lim,
+    '김아연': ah,
+    '김태형': tae,
+    '주혁중': ju,
+    '김호중': ho
+};
+console.log(countName);
+</script>
+<script>
+    // 선생님 버전
+    let peopleCount = {};
+    for(let elem of members){
+        if (peopleCount[elem]) {
+            // peopleCount.elem -> X -> 객체의 키(손필규: '7' 형태)를 표현하는 스트링 값('손필규': '7' 형태)이기 때문에 안됨
+            peopleCount[elem] += 1; // 알아서 이름 옆에 숫자가 쌓임
+        }else{
+            peopleCount[elem] = 1;  // 처음은 다 여기로 옴 -> 처음엔 아무것도 존재하지 않기 때문에
+        }
+    }
+    console.log(peopleCount);
+</script>
+</body>
+</html>

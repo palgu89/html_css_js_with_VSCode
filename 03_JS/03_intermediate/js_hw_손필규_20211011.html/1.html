@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1번</title>
+</head>
+<body>
+<h1>1. 조건을 참고 및 추리하여 코드를 작성해보세요</h1>
+<ul>
+    <li>a. 정수 5개를 랜덤 생성하기</li>
+    <li>b. 생성한 정수 출력</li>
+    <li>c. 오름차순으로 정렬하기</li>
+    <li>d. 정렬 후 출력</li>
+</ul>
+<script>
+    let climb = [];
+    for (let i = 0; i < 5; i++) {
+        climb[i] = Math.floor(Math.random()*100+1);
+    }
+    console.log(climb);
+    console.log('------------------');
+
+    let change;
+    for (let i = 0; i < climb.length-1; i++) {   
+        for (let j = 0; j < climb.length -1 - i; j++) {
+            if (climb[j+1] < climb[j]) {
+                change = climb[j];
+                climb[j] = climb[j+1];
+                climb[j+1] = change;
+            }
+        }
+    }
+    console.log(climb);
+</script>
+<script>
+    // 선생님 버전
+    function makeRandom(limit){
+        let r_arr = [];
+        for (let i = 0; i < 5; i++) {
+            let rnum = Math.floor(Math.random()*limit)+1;
+            r_arr[r_arr.length] = rnum;
+        }
+        console.log(`정렬 전: ${r_arr.toString()}`);
+        return r_arr;
+    }
+    
+    let nums = makeRandom(100);
+    let temp = 0;
+    for (let i = 0; i < nums.length; i++) {     // 확실히 줄이려면 nums.length -1 을 하면 더 짧아진다.
+        for (let j = i+1; j < nums.length; j++) {   // j=0으로 하면 필요없는 것까지 싹 다 돌아서 비효율적
+            if (nums[i] > nums[j]) {
+                let temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
+            }
+        }
+    }
+    console.log(`정렬 후: ${nums.toString()}`);
+
+    // 배열 정렬 메서드 sort() -> 뺀 값이 양수가 되면 바꾸라고 생각하자
+    nums.sort(function(a, b){
+        return b - a;           // 역 정렬
+    });
+    console.log(`재정렬: ${nums.toString()}`);
+
+    nums.sort(function(a, b){
+        return a - b;           // 순 정렬
+    });
+    console.log(`재재정렬: ${nums.toString()}`);
+</script>
+</body>
+</html>
