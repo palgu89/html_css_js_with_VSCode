@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>마우스 이벤트</title>
+</head>
+<body>
+    <h1>자주 사용하는 마우스 이벤트</h1>
+    <ul>
+        <li>click: onclick, dbclick(더블클릭), contextmenu(우클릭)</li>
+        <li>wheel: wheel, scroll, wheel button click(?)</li>
+        <li>drag and drop: drag, [dragstart, draaagleave, dragover, dragenter, dragend,] drop</li>
+        <li>focus and blur: 폼태그의 커서 이동, 커서 아웃</li>
+        <li>input change: 입력된 상태, 입력한 값이 바뀌는 상태</li>
+        <li>mouseover(CSS hover): target element의 자식요소에까지 영향 미침</li>
+        <li>mouseenter(mouseleave): target element에만 이벤트 적용</li>
+        <li>submit: 폼태그가 제출될 때</li>
+    </ul>
+    <hr>
+    <button type="button" id="btn">버튼을 클릭하면?</button>
+    <h1 id="result"></h1>
+    입력: <input type="text"d="ip"><br>
+    <select name="" id="sel">
+        <option value="x">X</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+    </select>
+<script>
+    // wheel button click
+    // e.button -> 0: 좌측, 1: 휠, 2: 우측
+    document.getElementById('btn').addEventListener('auxclick',(e)=>{
+        if(e.button == 1){
+            console.log(e.button);
+            document.getElementById('result').innerText = "마우스 휠을 클릭함!";
+        }
+    });
+    // 좌측 클릭
+    document.getElementById('btn').addEventListener('click',(e)=>{
+        console.log(e.button);
+        document.getElementById('result').innerText = "마우스 좌측을 클릭함!";
+    });
+    // 우측 클릭
+    document.getElementById('btn').addEventListener('contextmenu',(e)=>{
+        console.log(e.button);
+        document.getElementById('result').innerText = "마우스 우측을 클릭함!";
+    });
+
+    document.getElementById('ip').addEventListener('input',(e)=>{
+        document.getElementById('result').innerText = "인풋태그에 입력함!";
+    });
+    document.getElementById('sel').addEventListener('change',(e)=>{
+        document.getElementById('result').innerText = "선택태그의 값을 변경함!";
+    });
+</script>
+</body>
+</html>

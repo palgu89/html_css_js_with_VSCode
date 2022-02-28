@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keyboard Event</title>
+</head>
+<body>
+    <h1>Keyboard Event</h1>
+    <ul>
+        <li>키가 내려갈 때: keydown </li>
+        <li>키를 누른 상태: keypress </li>
+        <li>키가 올라올 때: keyup</li>
+        <li>키의 값: event.key, event.code</li>
+    </ul>
+    <hr>
+    <h1>e.type: <span id="type"></span></h1>
+    <h1>e.key: <span id="key"></span></h1>
+    <h1>e.code: <span id="code"></span></h1>
+    입력: <input type="text" id="ip">
+<script>
+    const key_h1 = document.getElementById('key');
+    const code_h1 = document.getElementById('code');
+    const type_h1 = document.getElementById('type');
+    document.getElementById('ip').addEventListener('keydown',(e)=>{
+        key_h1.textContent = e.key;
+        code_h1.textContent = e.code;
+        type_h1.textContent = e.type;
+    });
+    document.getElementById('ip').addEventListener('keypress',(e)=>{
+        key_h1.textContent = e.key;
+        code_h1.textContent = e.code;
+        type_h1.textContent = e.type;
+    });
+    document.getElementById('ip').addEventListener('keyup',(e)=>{
+        key_h1.textContent = e.key;
+        code_h1.textContent = e.code;
+        type_h1.textContent = e.type;
+    });
+</script>
+</body>
+</html>

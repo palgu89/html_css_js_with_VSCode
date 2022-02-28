@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DOM Method를 활용한 태그 생성</title>
+<link rel="stylesheet" href="">
+<style></style>
+</head>
+<body>
+    <button type="button" id="btn1">Li Tag 한방에 추가하기</button>
+    <button type="button" id="btn2">Li Tag 순차적 추가하기</button>
+    <button type="button" id="btn3">Li Tag 순차적 추가하기 with closure</button>
+    <ul id="ul"></ul>
+    <ol id="ol"></ol>
+    <ol id="ol2"></ol>
+    <!-- jQuery 쓰려면 이걸 써야함 ->
+    <script src="https//ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+<script>
+    // 객체 방식으로 li하나 만들어보기
+    // 안쪽부터 다 만들고 바깥을 감싼다.
+    document.getElementById('btn1').addEventListener('click',()=>{
+        let li1 = document.createElement('li'); //<li></li>생성
+        let a_in_li1 = document.createElement('a'); // <a></a>생성
+        a_in_li1.setAttribute('href', '#home'); // <a href="#home"></a>
+        a_in_li1.innerText = 'Home';    // <a href="#home">Home</a>
+        // li1의 자식으로 a_in_li1을 넣겠다 -> appendChild()
+        li1.appendChild(a_in_li1);  // <li><a href="#home">Home</a></li>
+    });
+    
+    // forEach로 모든 li 뽑아보기
+    const datas = ["Home", "News", "Contact", "About"];
+    document.getElementById('btn1').addEventListener('click',()=>{
+        datas.forEach(elem => {
+        let li = document.createElement('li');
+        let a_in_li = document.createElement('a');
+        a_in_li.setAttribute('href', `#${elem.toLowerCase()}`);
+        a_in_li.innerText = elem;
+        li.appendChild(a_in_li);
+        ul.appendChild(li);
+        });
+        // console.log($(ul)); jQuery 용법, 해당 객체를 분석 해준다.
+    });
+
+    let idx = 0;
+    document.getElementById('btn2').addEventListener('click',()=>{
+        if (idx < datas.length) {
+            let li2 = document.createElement("li");
+            let a2 = document.createElement("a");
+            a2.setAttribute('href', `#${datas[idx].toLowerCase()}`);
+            a2.innerText = datas[idx];
+            li2.appendChild(a2);
+            ol.appendChild(li2);
+            idx++;
+        }
+    });
+
+    // closure를 이용하여 전역변수 쓰지 않고 출력하기
+    const getDatas = (()=>{
+        const datas = ["Home", "News", "Contact", "About"];
+        let idx = -1;   // idx에 1을 더해준 뒤 리턴하는데 인덱스는 0부터 시작하니까 -1
+        return function(){
+            idx += 1;
+            return [datas[idx], datas.length];
+            // 10개 이상이거나 많으면 객체 방식으로 리턴해야한다
+            // return {val: data[idx], len:datas.length};
+        }
+    })();
+    function createLiTags(obj){
+        if (idx < obj.len) {
+            let li3 = document.createElement("li");
+            let a3 = document.createElement("a");
+            a3.setAttribute('href', `#${obj.val.toLowerCase()}`);
+            a3.innerText = obj.val;
+            li3.appendChild(a3);
+            ol.appendChild(li3);
+        }
+    }
+    document.getElementById('btn3').addEventListener('click',()=>{
+        let data = getDatas();
+        createLiTags(data); // 보안을 위해 함수로 가리는게 좋다
+        // 함수를 따로 쓰지 않고 바로 쓰면 아래와 같다
+        // if (idx < data[1]) { //data[1] = datas.length
+        //     // 객체 방식이면 if (idx < data.len)
+        //     let li3 = document.createElement("li");
+        //     let a3 = document.createElement("a");
+        //     a3.setAttribute('href', `#${data.toLowerCase()}`);
+        //     // 객체 방식이면 a3.setAttribute('href', `#${data.val.toLowerCase()}`);
+        //     a3.innerText = data[0];
+        //     // 객체 방식이면 a3.innerText = data.val;
+        //     li3.appendChild(a3);
+        //     ol.appendChild(li3);
+        // }
+    });
+</script>
+</body>
+</html>

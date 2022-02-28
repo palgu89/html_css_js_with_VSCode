@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>getElements</title>
+</head>
+<body>
+<h1>DOM getElements</h1>
+<ul id="ul">
+    <li class="odd">first</li>
+    <li class="even">second</li>
+    <li class="odd">third</li>
+    <li class="even">fourth</li>
+</ul>
+<h3>Result: <span></span></h3>
+<a href="">네이버 링크 열기</a>
+<script>
+    // document.querySelector('a').href = 'https://www.naver.com';
+    // document.querySelector('a').target = '_blank';
+    // 위 방법과 똑같은 결과
+    document.querySelector('a').setAttribute('href', 'https:/www.naver.com');
+    document.querySelector('a').setAttribute('target', '_blank');
+    // 왜 쓰냐면 수정에 용이함
+    let attrs = {
+        attrName: 'target',
+        attrValue: '_blank'
+    }
+    document.querySelector('a').setAttribute(attrs.attrName, attrs.attrValue);
+
+    let ul = document.getElementById('ul');
+    console.log(ul);
+    console.log(typeof ul); // object
+    console.log(ul instanceof HTMLUListElement);    // true
+    let lis = document.getElementsByTagName('li');
+    console.log(lis);
+    let odd = document.getElementsByClassName('odd');
+    console.log(odd);
+
+    let even = document.querySelectorAll('.even');
+    console.log(even);  // even class 두개 출력
+
+    let ul2 = document.querySelector('#ul');
+    console.log(ul2);
+
+    let li = document.querySelector('ul > li:first-child');
+    console.log(li);    // 첫 list 출력
+    console.log(li instanceof HTMLElement); // true
+
+    document.write('<hr>'); // html에 hr태그가 출력 됨
+    document.write(new Date()); // html에 시간이 출력 됨 
+    // 단 원래 페이지 요소들을 덮어버림
+</script>
+</body>
+</html>
