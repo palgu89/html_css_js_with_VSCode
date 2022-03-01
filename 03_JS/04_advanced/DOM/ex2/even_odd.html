@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Even Odd</title>
+<style>
+    body {
+        background-color: gainsboro;
+    }
+    .container {
+        width: 500px;
+        margin: 0 auto;
+    }
+    .btnBox {
+        text-align: center;
+    }
+    button {
+        color: blue;
+        border: 0;
+        background-color: gainsboro;
+        margin-top: 20px;
+    }
+    .evenBox {
+        background-color: blue;
+        color: white;
+    }
+</style>
+</head>
+<body>
+    <div class="container"></div>
+    <div class="btnBox">
+        <button type="button" id="startBtn">숫자 생성</button>
+        <button type="button" id="evenBtn">짝수</button>
+        <button type="button" id="oddBtn">홀수</button>
+    </div>
+<script>
+    // 숫자 생성 버튼 누르면 숫자 랜덤 생성
+    document.getElementById('startBtn').onclick=()=>{
+        let container = document.querySelector('.container');
+        container.innerHTML = '';
+        for (let i = 0; i < 24; i++) {
+            let evenOdd = [];
+            let rNum = Math.floor(Math.random()*100+1);
+            evenOdd[i] = rNum;
+            for (let j = 1; j < rNum.length; j++) {
+                if (evenOdd[i] == evenOdd[j]) {
+                    evenOdd[j] = Math.floor(Math.random()*100+1);
+                }
+            }
+            let div = document.createElement('div');
+            div.style.backgroundColor = "white";
+            div.style.borderRadius = "2px";
+            div.style.padding = "10px";
+            div.style.margin = "5px";
+            div.style.border = "0";
+            div.style.width = "30px";
+            div.style.textAlign = "center";
+            div.style.display = "inline-block";
+            div.classList.add('numBox');
+            div.innerText = `${evenOdd[i]}`;
+            document.querySelector('.container').appendChild(div);
+        }
+    };
+        
+        // 짝수 버튼 누르면 짝수만 색깔 변함
+        document.getElementById('evenBtn').onclick=()=>{
+            let evenBox = document.querySelectorAll('.numBox');
+            for (let i = 0; i < evenBox.length; i++) {
+                if (evenBox[i].textContent % 2 == 0) {
+                    evenBox[i].style.backgroundColor = "blue";
+                    evenBox[i].style.color = "white";
+                } else {
+                    evenBox[i].style.backgroundColor = "white";
+                    evenBox[i].style.color = "black";
+                }
+            }
+        };
+        
+        // 홀수 버튼 누르면 홀수만 색깔 변함
+        document.getElementById('oddBtn').onclick=()=>{
+            let evenBox = document.querySelectorAll('.numBox');
+            for (let i = 0; i < evenBox.length; i++) {
+                if (evenBox[i].textContent % 2 != 0) {
+                    evenBox[i].style.backgroundColor = "blue";
+                    evenBox[i].style.color = "white";
+                } else {
+                    evenBox[i].style.backgroundColor = "white";
+                    evenBox[i].style.color = "black";
+                }
+            }
+        };
+</script>
+</body>
+</html>

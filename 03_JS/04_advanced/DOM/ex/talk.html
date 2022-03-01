@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    .logging > div {
+        border-radius: 50%;
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+    }   
+    .red {
+        background-color: red;
+    }
+    .yellow {
+        background-color: yellow;
+    }
+    .green {
+        background-color: green;
+    }
+    .head {
+        position: relative;
+    }
+    .head > img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 5px;
+    }
+    .head > span {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .chatBox {
+        background-color: rgb(178, 199, 238);
+        height: 700px;
+    }
+    #yourTalk {
+        list-style: none;
+    }
+    li {
+        background-color: white;
+        border-radius: 10px;
+        padding: 10px;
+    }
+    .inputBox {
+        height: 135px;
+        padding: 10px;
+        background-color: rgb(245, 243, 243);
+    }
+    #ipTalk {
+        border: 1px solid rgb(209, 209, 209);
+        height: 110px;
+        width: 75%;
+        border-radius: 5px;
+    }
+    #btn {
+        height: 110px;
+        background-color: dodgerblue;
+        border: 0;
+        width: 20%;
+        margin-left: 10px;
+        border-radius: 5px;
+        color: white;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class='logging'>
+        <div class="red"></div>
+        <div class="yellow"></div>
+        <div class="green"></div>
+    </div>
+    <div class="head">
+        <img src="me.png" alt="">
+        <span>구남친</span>
+    </div>
+    <div class="chatBox">
+        <ul id="yourTalk">
+            <li>잘 지내?</li>
+            <li>자니?</li>
+        </ul>
+        <ul id="myTalk"></ul>
+    </div>
+    <div class="inputBox">
+        <input type="text" id="ipTalk" placeholder="대화내용이 들어갑니다.">
+        <button type="button" id="btn">전송</button>
+    </div>
+</div>
+<script>
+    document.getElementById('ipTalk').addEventListener('input',()=>{
+        let ipTalk = document.getElementById('ipTalk').value;
+        document.getElementById('btn').addEventListener('click',()=>{    
+            let myTalk = `<li>${ipTalk}</li>`;
+            document.getElementById('myTalk').innerHTML = myTalk;
+        });
+    });
+</script>
+</body>
+</html>

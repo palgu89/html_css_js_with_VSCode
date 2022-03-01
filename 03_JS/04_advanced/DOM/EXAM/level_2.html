@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Javascript Level 2 Test</title>
+</head>
+<body>
+<h1>점수 / 등급 / 랭킹 출력하기</h1>
+<ol>
+    <li>6개의 과목 점수와 인원 수 입력 받기</li>
+    <li>합계, 평균, 등급 연산하여 합계로 순위를 결정</li>
+    <li>등급은 (A[90이상], B[80이상], C[70이상], D[60이상], F[60미만])</li>
+    <li>가장 높은 합계점수를 받은 사람부터 출력</li>
+</ol>
+<hr>
+인원 수: <input type="number" id="person"><br>
+<button type="button" id="btn">점수 입력하기</button>
+<button type="button" id="rank">랭킹 매기기</button>
+<hr>
+<div id="container"></div>
+<div id="container2"></div>
+<script>
+    document.getElementById('btn').addEventListener('click',()=>{
+        let person = parseInt(document.getElementById('person').value);
+        let container = document.getElementById('container');
+        let container2 = document.getElementById('container2');
+        container.innerHTML ='';
+        container2.innerHTML = '';
+        let str;
+        for (let i = 0; i < person; i++) {
+            str = `이름: <input type="text" id="name${i}"><br>`;
+            str += `수학: <input type="number" id="math${i}"><br>`;
+            str += `영어: <input type="number" id="eng${i}"><br>`;
+            str += `국어: <input type="number" id="kor${i}"><br>`;
+            str += `과학: <input type="number" id="sci${i}"><br>`;
+            str += `사회: <input type="number" id="social${i}"><br>`;
+            str += `미술: <input type="number" id="art${i}"><br><br>`;
+            container.innerHTML += str;
+        }
+        
+        let rankArr = [];
+        function scoreCalculation(n, s0, s1, s2, s3, s4, s5){
+            let collect = {};
+            let sum = s0+s1+s2+s3+s4+s5;
+            let avg = Math.floor(sum / 6);
+            let grade = '';
+            if (avg >= 90) {
+                grade = 'A';
+            } else if(avg < 90 && avg >= 80){
+                grade = 'B';
+            } else if(avg < 80 && avg >= 70){
+                grade = 'C';
+            } else if(avg < 70 && avg >= 60){
+                grade = 'D';
+            } else {
+                grade = 'F';
+            }
+            collect['이름'] = n;
+            collect['합계'] = sum;
+            collect['평균'] = avg;
+            collect['등급'] = grade;
+            console.log(collect);
+            rankArr.push(collect);
+        }
+
+        document.getElementById('rank').addEventListener('click',()=>{
+            for (let j = 0; j < person; j++) {
+                let name = document.getElementById(`name${j}`).value;
+                let math = parseInt(document.getElementById(`math${j}`).value);
+                let eng = parseInt(document.getElementById(`eng${j}`).value);
+                let kor = parseInt(document.getElementById(`kor${j}`).value);
+                let sci = parseInt(document.getElementById(`sci${j}`).value);
+                let social = parseInt(document.getElementById(`social${j}`).value);
+                let art = parseInt(document.getElementById(`art${j}`).value);
+                scoreCalculation(name, math, eng, kor, sci, social, art);
+            }
+            let sorting;
+            sorting = rankArr.sort(function (a, b){
+                return b['합계'] - a['합계'];
+            });
+            console.log(sorting);
+            container2.innerHTML = sorting;
+        });
+    });
+</script>
+</body>
+</html>

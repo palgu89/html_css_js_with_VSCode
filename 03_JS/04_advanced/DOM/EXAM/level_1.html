@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Javascript Level 1 Test</title>
+</head>
+<body>
+    <!-- midasye@naver.com
+    javascript_hw_손필규_20211021.zip -->
+<h1>인원 정보 출력하기</h1>
+<ol>
+    <li>인원수(양의 정수) 입력받기</li>
+    <li>인원수 만큼 이름과 나이 입력 받기</li>
+    <li>입력받은 정보를 출력하기(console.log() X)</li>
+</ol>
+인원 수: <input type="text" id="personNum">
+<button type="button" id="btn">입력</button>
+<hr>
+<div id="nameAge"></div>
+<script>
+    document.getElementById('btn').addEventListener('click',()=>{
+        let personNum = parseInt(document.getElementById('personNum').value);
+        let nameAge = document.getElementById('nameAge');
+        nameAge.innerHTML ='';
+        for (let i = 0; i < personNum; i++) {
+            let name = `이름: <input type="text" id="name${i}"><br>`;
+            let age = `나이: <input type="text" id="age${i}"><br><br>`;
+            nameAge.innerHTML += name;
+            nameAge.innerHTML += age;
+        }
+        let receive = '<button type="button" id="receBtn">정보 출력</button>';
+        nameAge.innerHTML += receive;
+
+        document.getElementById('receBtn').addEventListener('click',()=>{
+            let nameAll = [];
+            let ageAll = [];
+            let total = [];
+            for (let j = 0; j < personNum; j++) {
+                nameAll[j] = document.getElementById(`name${j}`).value;
+                ageAll[j] = parseInt(document.getElementById(`age${j}`).value);
+                total[j] = `<div>이름: ${nameAll[j]}, 나이: ${ageAll[j]}</div>`;
+            }
+            nameAge.innerHTML += '<hr>';
+            nameAge.innerHTML += `${total}`; 
+        });
+    });
+</script>
+</body>
+</html>

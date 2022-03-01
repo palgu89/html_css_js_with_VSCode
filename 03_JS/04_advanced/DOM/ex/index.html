@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatting</title>
+    <link rel="stylesheet" href="chatting.css" />
+  </head>
+  <body>
+    <div class="chat-container">
+      <div class="chat-header">
+        <button id="close" class="header-btn"></button>
+        <button id="minimize" class="header-btn"></button>
+        <button id="maximize" class="header-btn"></button>
+
+        <img id="profile-pic" src="" width="50" height="50" />
+        <span id="username">구남친</span>
+      </div>
+
+      <div class="chatbox">
+        <div class="friend-bubble bubble">잘 지내?</div>
+        <div class="friend-bubble bubble">자니?</div>
+      </div>
+
+      <div class="text-box">
+        <textarea placeholder="대화내용이 들어갑니다."></textarea>
+        <button id="send">전송</button>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+    <script>
+        document.getElementById('send').addEventListener('click', ()=>{
+            const textarea = document.querySelector('textarea');
+            let msg = textarea.value;
+            if (msg.length > 0) {
+                let div = document.createElement('div');
+                div.classList.add('my-bubble', 'bubble');
+                div.innerText = msg;
+                document.querySelector('.chatbox').appendChild(div);
+                textarea.value = "";
+                textarea.focus();
+            }
+        });
+    </script>
+  </body>
+</html>
