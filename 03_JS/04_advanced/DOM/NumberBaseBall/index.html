@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>숫자야구게임</title>
+</head>
+<body>
+<h1>숫자야구 규칙</h1>
+<ol>
+    <li>1~9까지의 숫자 3개를 중복되지 않게 랜덤으로 정한다 ex) [6, 2, 9]</li>
+    <li>상대방은 이 3개의 숫자를 정확히 맞추는 게임</li>
+    <li>스트라이크(S): 숫자 값과 자리수가 일치할 때 [6, 1, 4] -> 1S</li>
+    <li>볼(B): 숫자 값은 맞췄지만 자리수가 일치하지 않을 떄 [9, 1, 6] -> 2B</li>
+    <li>아웃(OUT): 숫자 값이 모두 일치하지 않을 때 [1, 3, 7] -> OUT</li>
+</ol>
+<ul>
+    <li>형식은 자유</li>
+    <li>게임 진행 상황은 기록되어야 할 것</li>
+    <li>(optional) 게임 진행 시간 기록</li>
+    <li>(optional) 시도 횟수 기록</li>
+    <li>(optional) 게임 완료 시간, 게임 소요 시간 기록과 시도 횟수 기록을 객체로 저장하여</li>
+    <li>(optional) 그 객체를 배열로 저장</li>
+    <li>(optional) 배열로 저장된 기록을 정렬할 수 있는 기능</li>
+</ul>
+<hr>
+<button type="button" id="start">시작</button>
+<div class="quiz"></div>
+<script>    
+document.getElementById('start').addEventListener('click', ()=>{
+    let baseNum = new Set();
+    while (baseNum.size < 3) {
+            let rNum = Math.floor(Math.random()*9) + 1;
+            baseNum.add(rNum);
+        }
+    for (let i = 0; i < 3; i++) {
+        let num = Math.floor(Math.random()*9)+1;
+        baseNum[i] = num;
+    }
+    console.log(baseNum);
+    let strike = 0;
+    let ball = 0;
+    let count = 0;
+
+    let quiz = document.querySelector('.quiz');
+    let ipNum = document.createElement('input');
+    ipNum.type = "number";
+    ipNum.maxLength = 3;
+    ipNum.className = "ipNum";
+    quiz.appendChild(ipNum);
+    let btn = document.createElement("button");
+    btn.type = "button";
+    btn.id = "btn";
+    btn.innerText = "확인";
+    quiz.appendChild(btn);
+    
+    document.getElementById('btn').onclick=()=>{
+        count++;
+        let ans = String(document.querySelector('.ipNum').value).split('');
+        console.log(ans);
+        for (let j = 0; j < baseNum.length; j++) {
+            for (let k = 0; k < baseNum.length; k++) {
+                if (ans[j] == baseNum[k]) {
+                    if(j === k){
+                        strike++;
+                    } else {
+                        ball++;
+                    }
+                    break;
+                }
+                
+            }
+            
+        }
+        if (strike == 3) {
+            let homerun = document.createElement('div');
+            homerun.innerText = `${ans}, 정답입니다. ${count}번 만에 성공했습니다.`;
+            quiz.appendChild(homerun);
+            
+        } else {
+            let whatSB = document.createElement('div');
+            whatSB.innerText = `${strike}S, ${ball}B 입니다.`;
+            quiz.appendChild(whatSB);
+        }
+    };
+});
+
+</script>
+</body>
+</html>

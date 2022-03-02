@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-form">
+        <form>
+            <input type="email" name="email" class="text-field" placeholder="아이디"><br>
+            <input type="password" name="pwd" class="text-field" placeholder="비밀번호"><br>
+            <input type="submit" value="로그인" class="submit-btn" disabled>
+        </form>
+        <div class="links">
+            <a href="#">비밀번호를 잊어버리셨나요?</a>
+        </div>
+    </div>
+<!-- 처음에 버튼 disabled
+css 버튼 컬러가 기본이 그레이
+아이디 이메일 주소 형식
+비번 8자리 이상
+이면 버튼 활성화 -->
+<script>
+    function checkEmailForm(param) {
+        // 인터넷에 자바스크립트 이메일 정규식이라고 쳐서 복사해오자
+        if (true) {
+            return true;
+        }
+        return false;
+    }
+    function buttonActivation(){
+        let email = document.querySelector('input[name="email"]').value;
+        let pwd = document.querySelector('input[name="pwd"]').value;
+
+        if(checkEmailForm(email) && pwd.length > 7) {
+        // if (eamil.includes('@') && pwd.length > 7) {
+            document.querySelector('input[type=submit]').style.backgroundColor = "#1BBC9b";
+            document.querySelector('input[type=submit]').setAttribute('disabled', false);
+        } else {
+            document.querySelector('input[type=submit]').style.backgroundColor = "#aaa";
+            document.querySelector('input[type=submit]').setAttribute('disabled', true);
+        }
+    }
+    document.querySelector('input[name=email]').addEventListener('input',buttonActivation);
+    document.querySelector('input[name=pwd]').addEventListener('input',buttonActivation);
+    
+    
+    
+    // document.querySelector('input[name=pwd]').addEventListener('input',(e)=>{
+    //     console.log(document.querySelector('input[name="pwd"]').value);
+    //     let pwd = document.querySelector('input[name="pwd"]').value;
+    // });
+</script>
+</body>
+</html>
