@@ -1,0 +1,308 @@
+@font-face {
+    font-family: godoMaum;
+    src: url('../../../pf/css/font/godoMaum.ttf');
+  }
+@font-face {
+    font-family: Magnolin;
+    src: url('../../../pf/css/font/Magnolin.otf')
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    padding: 30px 0 0 0;
+    margin: 0;
+}
+.navLogo{
+    color: black;
+    font-family: Magnolin;
+    text-decoration: none;
+    font-size: x-large;
+    font-weight: bolder;
+    padding-top: 20px;
+}
+nav {
+    text-transform: uppercase;
+    width: 100%;
+    background-color: gold;
+    color: white;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    line-height: 30px;
+}
+.navBar {
+    float: right;
+}
+.navBar ul {
+    padding: 0;
+    margin: 0;
+}
+.navBar li {
+    margin: 10px;
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+    list-style: none;
+    display: inline-block;
+}
+.navBar a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+header {
+    background-image: url('../assets/img/home-bg.jpg');
+    margin-top: 20px;
+    clear: both;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 320px;
+    position: relative;
+}
+.headerCont {
+    font-family: godoMaum;
+    position: absolute;
+    text-align: center;
+    top: 45%;
+    left: 33%;
+    transform: translate(-50%, -50%);
+    transform: rotate(-8.5deg);
+    z-index: 0;
+}
+section > h2 {
+    margin-left: 20px;
+}
+hr {
+    width: 150px;
+    margin: 0 0 10px 0px;
+    border-color: grey;
+}
+.portfolio {
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 15px 25px 25px 40px;
+    width: 400px;
+    display: inline-block;
+    border-radius: 5px;
+    font-family: godoMaum;
+}
+.portfolio img {
+    width: 400px;
+    border-radius: 5px 5px 0 0;
+}  
+.pfBox {
+    text-align: center;
+    padding: 10px 20px;
+}
+.skillsBox {
+    background-color: rgb(250, 246, 246);
+    padding: 10px 0;
+}
+.skillsBox li{
+    list-style: none;
+    display: inline-block;
+    margin: 15px 50px;
+    text-align: center;
+    font-family: godoMaum;
+}
+i {
+    font-size: 100px;
+    color: gold;
+}
+.aboutMeAlign {
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}
+.aboutMeBox {
+    text-align: center;
+    margin: 25px 0;
+    padding: 0;
+}
+.aboutMe {
+    width: 300px;
+    height: 300px;
+    display: inline-block;
+    background-image: url('../../assets/img/about/about_me.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px;
+}
+.aboutMeInfo, .aboutInfo {
+    display: flex;
+    justify-content: center;
+    font-family: godoMaum;
+}
+.aboutMeInfo ul, .aboutInfo ul {
+    margin: 0;
+    padding: 0;
+}
+.aboutMeInfo li, .aboutInfo li {
+    list-style: none;
+    line-height: 40px;
+}
+.aboutAlign {
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}
+.aboutBox {
+    width: 180px;
+    display: inline-block;
+    margin: 20px 10px;
+}
+.aboutHigh, .aboutArmy, .aboutStudentUnion, .aboutUniv, .aboutAssistant, .aboutDeveloper {
+    width: 180px;
+    height: 180px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px;
+}
+.aboutHigh {
+    background-image: url('../../assets/img/about/highshcool.jpg');
+}
+.aboutArmy {
+    background-image: url('../../assets/img/plus/army.jpg');
+}
+.aboutStudentUnion {
+    background-image: url('../../assets/img/plus/studentUnion.jpg');
+}
+.aboutUniv {
+    background-image: url('../../assets/img/about/Sejong.jpg');
+}
+.aboutAssistant {
+    background-image: url('../../assets/img/plus/assistant.jpg');
+}
+.aboutDeveloper {
+    background-image: url('../../assets/img/about/3.jpg');
+}
+#feedbackSec {
+    background-color: rgb(250, 246, 246);
+    padding: 10px 0;
+}
+#giveFeedback {
+    text-align: center;
+    font-family: godoMaum;
+}
+#feedbackBtn {
+    width: 70px;
+    height: 40px;
+    background-color: gold;
+    border: 1px solid gold;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+#feedbackBtn:hover {
+    cursor: pointer;
+}
+#feedbackBox {
+    position: relative;
+    height: 320px;
+    margin-top: 25px;
+    font-family: godoMaum;
+}
+#name, #email, #feedCont{
+    width: 400px;
+    height: 30px;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+#feedbackForm {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.recivBtn {
+    background-color: gold;
+    border: 1px solid gold;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    width: 150px;
+    height: 30px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    float: right;
+    font-family: godoMaum;
+}
+#seeFeedback{
+    background-color: gold;
+    border: 1px solid gold;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    margin: 10px;
+    padding: 10px;
+}
+footer {
+    padding: 10px;
+    background-color: gold;
+    text-align: center;
+    font-family: godoMaum;
+}
+
+@media (min-width: 576px) {
+    .portfolio {
+        width: 500px;
+    }
+    .portfolio img {
+        width: 500px;
+    }
+}
+
+@media (min-width: 768px) {
+    .portfolio {
+        width: 300px;
+    }
+    .portfolio img {
+        width: 300px;
+    }
+    .aboutMeBox {
+        padding: 0 11%;
+    }
+    .aboutMe {
+        float: left;
+    }
+    .aboutMeInfo {
+        text-align: left;
+    }
+    .aboutAlign {
+        clear: both;
+    }
+}
+
+@media (min-width: 992px) {
+    .portfolio {
+        width: 400px;
+    }
+    .portfolio img {
+        width: 400px;
+    }
+    .aboutMeInfo {
+        padding-left: 50px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .portfolio {
+        width: 300px;
+    }
+    .portfolio img {
+        width: 300px;
+    }
+    .aboutMeBox {
+        padding: 0 20%;
+    }
+}
+@media (min-width: 1400px) {
+    .aboutMeBox {
+        padding: 0 30%;
+    }
+}

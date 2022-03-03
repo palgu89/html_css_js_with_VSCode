@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2048 GAME</title>
+<link rel="stylesheet" href="css/2048.css">
+</head>
+<body>
+  <h1>2048 Game</h1>
+  <div id="scoreBox">
+    <span id="scoreText">score: </span><span id="score">0</span>
+    <button type="button" id="startBtn">시작</button>
+    <button type="button" id="backBtn">되돌리기</button>
+  </div>
+  <table id="table"></table>
+  <h3>조작법 및 게임 규칙</h3>
+  <ol>
+    <li><h4>키보드 상하좌우키, 마우스 클릭 후 드래그를 이용해 칸을 움직입니다</h4></li>
+    <li><h4>움직일 때마다 랜덤으로 2나 4가 생겨나며, 똑같은 숫자 2개가 만나면 합쳐져 더해지게 됩니다</h4></li>
+    <li><h4>칸을 움직여 2048을 만들면 되는 게임입니다</h4></li>
+    <li><h4>합쳐질 숫자가 없어 칸이 꽉 찬 경우 게임은 종료됩니다</h4></li>
+    <li><h4>도중에 되돌리기를 누르면 직전의 상태로 돌아갑니다</h4></li>
+    <li><h4>시작을 누르면 처음으로 초기화 됩니다</h4></li>
+    <li><h4>즐거운 게임 되세요!</h4></li>
+  </ol>
+<script>
+  const table = document.getElementById('table');
+  const score = document.getElementById('score');
+  let data = [];
+  const history = [];
+
+  document.getElementById('backBtn').addEventListener('click', function(){
+    const prevData = history.pop();
+    if(!prevData){  // 되돌릴 데이터가 없으면 종료
+      return;
+    }
+    score.textContent = prevData.score;
+    data = prevData.table;
+    draw();
+  })
+
+  document.getElementById('startBtn').addEventListener('click', function(){
+    table.innerHTML = '';
+    data = [];
+    score.textContent = 0;
+    startGame();
+  })
+
+  // table => fragment => tr => td
+  // tr과 td를 모두 만든뒤 fragment에 넣고 한번에 table에 넣기
+  function startGame(){
+    const fragment = document.createDocumentFragment();
+    [0,0,0,0].forEach(function (){
+      const rowCell = [];
+      data.push(rowCell);
+      const tr = document.createElement('tr');
+      [0,0,0,0].forEach(function (){
+        rowCell.push(0);
+        const td = document.createElement('td');
+        tr.appendChild(td);
+      });
+       fragment.appendChild(tr);
+    });
+    table.appendChild(fragment);
+
+    input2RandCell();
+    draw();
+  }
+
+  function input2RandCell(){
+    const emptyCells = [];  // [[i1, j1], [i2, j2], [i3, j3]]
+    data.forEach(function (rowCell, i){
+      rowCell.forEach(function (colCell, j){
+        if(!colCell){
+          emptyCells.push([i,j]);
+        }
+      });
+    });
+    // randCell === [i, j] => i번째 줄, j번째 칸 고르기
+    const randCell = emptyCells[Math.floor(Math.random()*emptyCells.length)];
+    data[randCell[0]][randCell[1]] = createTwoOrFour();
+    check();
+  }
+
+  // 2 또는 4가 새로 추가
+  function createTwoOrFour(){
+    let percent = parseInt(Math.random()*10);
+    if(percent == 0){
+      return 4;
+    }else {
+      return 2;
+    }
+  }
+
+  function draw(){
+    data.forEach(function (rowCell, i){
+      rowCell.forEach(function (colCell, j){
+        const target = table.children[i].children[j];
+        if(colCell > 0){
+          target.textContent = colCell;
+          target.className = 'color-'+colCell;
+        }else{
+          target.textContent = '';
+          target.className = '';
+        }
+      });
+    });
+  }
+  // startGame();
+
+  // test용
+  // data = [
+  //   [32,2,4,2],
+  //   [64,4,8,2],
+  //   [2,1024,1024,32],
+  //   [32,16,64,4],
+  // ];
+  // draw();
+
+// 빈칸을 제외하고 한쪽으로 몰기 => 빈칸을 제외하고 요소들을 그냥 적어보면 자연스레 왼쪽으로 몰린 형태가 된다
+// [2,4,2]
+// [8]
+// [2,2,2,2]
+// [26, 4]
+
+  function moveCells(d){
+    history.push({
+      table: JSON.parse(JSON.stringify(data)),
+      score: score.textContent,
+    });
+    
+    switch(d){
+      case 'left': {
+        const newData = [[],[],[],[]];
+        data.forEach(function(rowCell, i){
+          rowCell.forEach(function(colCell, j){
+            // 빈칸 제외하고 넣기
+            if(colCell){
+              const currCell = newData[i];
+              const prevCell = currCell[currCell.length-1];
+              if(colCell === prevCell){
+                const plusScore = parseInt(score.textContent);
+                score.textContent = plusScore + currCell[currCell.length-1] * 2;
+                
+                // 2개가 합쳐져야 하는데 한번에 여러개가
+                // 합쳐질 경우에 대비해 일단 -2를 곱해
+                // 두개 이상 합쳐지지 않도록 한다
+                // 마지막에 절댓값으로 -를 없애준다
+                currCell[currCell.length-1] *= -2;
+              }else{
+                newData[i].push(colCell);
+              }
+            }
+          });
+        });
+        console.log(newData);
+        [1,2,3,4].forEach(function(rowCell, i){
+          [1,2,3,4].forEach(function(colCell, j){
+            data[i][j] = Math.abs(newData[i][j]) || 0;
+          });
+        });
+        for (let i = 0; i < 4; i++) {
+          for (let j = 0; j < 4; j++) {
+            if(data[i][j] == 0){
+            }
+          }
+        }
+        break;
+      }
+      case 'right': {
+        const newData = [[],[],[],[]];
+        data.forEach(function(rowCell, i){
+          rowCell.forEach(function(colCell, j){
+            if(rowCell[3-j]){ // 인덱스 3 => 2 => 1 => 0
+              const currCell = newData[i];
+              const prevCell = currCell[currCell.length-1];
+              if(rowCell[3-j] === prevCell){
+                const plusScore = parseInt(score.textContent);
+                score.textContent = plusScore + currCell[currCell.length-1] * 2;
+                
+                currCell[currCell.length-1] *= -2;
+              }else{
+                newData[i].push(rowCell[3-j]);
+              }
+            }
+          });
+        });
+        console.log(newData);
+        [1,2,3,4].forEach(function(rowCell, i){
+          [1,2,3,4].forEach(function(colCell, j){
+            data[i][3-j] = Math.abs(newData[i][j]) || 0;
+          });
+        });
+        for (let i = 0; i < 4; i++) {
+          for (let j = 0; j < 4; j++) {
+            if(data[i][j] == 0){
+            }
+          }
+        }
+        break;
+      }
+      case 'up': {
+        const newData = [[],[],[],[]];
+        data.forEach(function (rowCell, i){
+          rowCell.forEach(function(colCell, j){
+            if(colCell){
+              const currCell = newData[j];
+              const prevCell = currCell[currCell.length-1];
+              if(colCell === prevCell){
+                const plusScore = parseInt(score.textContent);
+                score.textContent = plusScore + currCell[currCell.length-1] * 2;
+                
+                currCell[currCell.length-1] *= -2;
+              }else{
+                newData[j].push(colCell);
+              }
+            }
+          });
+        });
+        console.log(newData);
+        [1,2,3,4].forEach(function(rowCell, i){
+          [1,2,3,4].forEach(function(colCell, j){
+            data[j][i] = Math.abs(newData[i][j]) || 0;
+          });
+        });
+        for (let i = 0; i < 4; i++) {
+          for (let j = 0; j < 4; j++) {
+            if(data[i][j] == 0){
+            }
+          }
+        }
+        break;
+      }
+      case 'down': {
+        const newData = [[],[],[],[]];
+        data.forEach(function(rowCell, i){
+          rowCell.forEach(function(colCell, j){
+            if(data[3-i][j]){
+              const currCell = newData[j];
+              const prevCell = currCell[currCell.length-1];
+              if(data[3-i][j] === prevCell){
+                const plusScore = parseInt(score.textContent);
+                score.textContent = plusScore + currCell[currCell.length-1] * 2;
+               
+                currCell[currCell.length-1] *= -2;
+              }else{
+                newData[j].push(data[3-i][j]);
+              }
+            }
+          });
+        });
+        console.log(newData);
+        [1,2,3,4].forEach(function(colCell, i){
+          [1,2,3,4].forEach(function(rowCell, j){
+            data[3-j][i] = Math.abs(newData[i][j]) || 0;
+          });
+        });
+        for (let i = 0; i < 4; i++) {
+          for (let j = 0; j < 4; j++) {
+            if(data[i][j] == 0){
+            }
+          }
+        }
+        break;
+      }
+    }
+      input2RandCell();
+      draw();
+  }
+    
+  let checkFlag = true;
+  function check(){
+    if(data.flat().includes(2048) && checkFlag){
+      draw();
+      setTimeout(function(){
+       alert(`2048! ${score.textContent}점입니다\n계속 하시겠어요?`);
+      }, 50);
+      checkFlag = false;
+    }else{
+      for (let i = 0; i < 4; i++) {
+        let colCheck = data[i][0];
+        if(colCheck == 0){
+          return;
+        }
+        for (let j = 1; j < 4; j++) {
+          if(data[i][j] == colCheck || data[i][j] == 0){
+            return;
+          }else{
+            colCheck = data[i][j];
+          }
+        } 
+      }
+      for (let i = 0; i < 4; i++) {
+        let colCheck = data[0][i];
+        if(colCheck == 0){
+          return;
+        } 
+        for (let j = 1; j < 4; j++) {
+          if(data[j][i] == colCheck || data[j][i] == 0){
+            return;
+          }else{
+            colCheck = data[j][i];
+          }
+        } 
+      }
+      setTimeout(function(){
+        alert(`움직일 곳이 없습니다ㅠㅠ ${score.textContent}점`);
+      }, 50);
+    }
+  } 
+  
+  document.addEventListener('keyup', function(e){
+    if(e.key === 'ArrowUp'){
+      moveCells('up');
+    }else if(e.key === "ArrowDown"){
+      moveCells('down');
+    }else if(e.key === 'ArrowLeft'){
+      moveCells('left');
+    }else if(e.key === "ArrowRight"){
+      moveCells('right');
+    }
+  });
+
+  // clientX, clientY => 페이지 내에서의 x, y 좌표
+  // pageX, pageY => 페이지에 스크롤이 생겼을 때의 x, y 좌표
+  // screenX, screenY => 모니터 기준 x, y 좌표
+  // offsetX, offsetY => 이벤트를 연결한 곳을 기준 x, y 좌표
+  // movementX, movementY => 마우스를 움직인 x, y 좌표의 거리
+
+  let moveStart;
+  document.addEventListener('mousedown', function(e){
+    moveStart = [e.clientX, e.clientY];
+  });
+  document.addEventListener('mouseup', function(e){
+    const moveEnd = [e.clientX, e.clientY];
+    // x좌표와 y좌표 움직인 거리 구하기
+    const gapX = moveEnd[0] - moveStart[0];
+    const gapY = moveEnd[1] - moveStart[1];
+    // x 좌표(좌우)에 따른 |y| 좌표가 움직인 거리로 방향 판단(사각형의 X 대각선 기준 상하좌우)
+    if(gapX < 0 && Math.abs(gapX) > Math.abs(gapY)){
+      moveCells('left');
+    }else if(gapX > 0 && Math.abs(gapX) > Math.abs(gapY)){
+      moveCells('right');
+    }else if(gapX > 0 && Math.abs(gapX) <= Math.abs(gapY)){
+      moveCells('down');
+    }else if(gapX < 0 && Math.abs(gapX) <= Math.abs(gapY)){
+      moveCells('up');
+    }
+  });
+
+</script>
+</body>
+</html>
+<!-- 시작 =>  4x4테이블을 그린다 => 랜덤한 위치에 2를 놓는다 => 대기
+마우스 || 키보드 이벤트 => 방향 판단 => 그 방향으로 숫자를 보낸다
+=> 합쳐지는게 있는가? => 예 => 숫자를 합쳐 2배로 만든다 => 2048이 되었는가? => 예 => 승리
+                                                                          => 아니오 => 랜덤한 위치에 2를 놓는다 => 대기
+                     => 아니오 => 공간이 있는가? => 예 => 랜덤한 위치에 2를 놓는다 => 대기
+                                                => 아니오 => 패배 -->

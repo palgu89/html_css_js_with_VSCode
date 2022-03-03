@@ -1,0 +1,106 @@
+body{
+    background-color: #eee4da;
+}
+h1 {
+    width: 518px;
+    color: #776e65;
+    text-align: center;
+}
+h3, h4{
+    color: #776e65;   
+}
+#scoreBox{
+    width: 518px;
+    height: 80px;
+    border: 10px solid #bbada0;
+    border-bottom: 10px solid #bbada0;
+    background-color: #eee4da;
+    color: #776e65;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 80px;
+    vertical-align: middle;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+}
+button:active, button:focus, button:hover{
+    outline: none;
+    cursor: pointer;
+}
+#backBtn, #startBtn{
+    user-select: none;
+    float: right;
+    border: 0px;
+    border-left: 10px solid #bbada0;
+    width: 130px;
+    height: 80px;
+    color: #776e65;
+    font-size: 20px;
+    font-weight: bold;
+}
+#startBtn{
+    float: left;
+    border: 0px;
+    border-right: 10px solid #bbada0;
+    width: 133px;
+}
+#table{
+    border-collapse: collapse;
+    user-select: none;
+    border-radius: 0 0 10px 10px;
+}
+#table td{
+    border: 10px solid #bbada0;
+    width: 120px;
+    height: 130px;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+}
+#score, #scoreText{
+    user-select: none;
+}
+.color-2{
+    background-color: #eee4da;
+    color: #776e65;
+}
+.color-4{
+    background-color: #eee1c9;
+    color: #776e65;
+}
+.color-8{
+    background-color: #f3b27a;
+    color: white;
+}
+.color-16{
+    background-color: #f69664;
+    color: white;
+}
+.color-32{
+    background-color: #f77c5f;
+    color: white;
+}
+.color-64{
+    background-color: #f75f3b;
+    color: white;
+}
+.color-128{
+    background-color: #edd073;
+    color: #776e65;
+}
+.color-256{
+    background-color: #edcc62;
+    color: #776e65;
+}
+.color-512{
+    background-color: #edc950;
+    color: #776e65;
+}
+.color-1024{
+    background-color: #edc53f;
+    color: #776e65;
+}
+.color-2048{
+    background-color: #edc22e;
+    color: #776e65;
+}

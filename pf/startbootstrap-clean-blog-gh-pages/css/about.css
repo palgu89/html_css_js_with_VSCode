@@ -1,0 +1,30 @@
+*{
+    box-sizing: border-box;
+}
+
+.meBox {
+    position: relative;
+    width: 100%;
+}
+#aboutMe {
+    background-image: url('../../assets/img/about/about_me.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
+    border: 7px solid rgb(220,220,220);
+    border-radius: 50%;
+    float: left;
+}
+#meInfo {
+    float: right;
+    position: absolute;
+    top: 100%;
+}
+
+#meInfo > ul {
+    list-style: none;
+}
+footer {
+    clear: both;
+}

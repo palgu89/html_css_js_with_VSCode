@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<style></style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+<script>
+    let canvas = document.getElementById('canvas');
+    let ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth - 100;
+    canvas.height = window.innerHeight - 100;
+    
+    // ctx.fillStyle = 'green';
+    // ctx.fillRect(10,10, 100,100);   // (10,10)좌표에 100x100 네모 그리기
+
+    let img1 = new Image();
+    img1.src = 'dinosaur.png';
+
+    let dino = {
+        x: 10,
+        y: 200,
+        width: 50,
+        height: 50,
+        draw(){
+            ctx.fillStyle = 'green';
+            // ctx.fillRect(this.x,this.y, this.width,this.height);
+            ctx.drawImage(img1, this.x, this.y);
+        }
+    }
+
+    let img1 = new Image();
+    img1.src = 'cactus.png';
+
+    class Cactus {
+        constructor(){
+            this.x = 500;
+            this.y = 200;
+            this.width = 50;
+            this.height = 50;
+        }
+        draw(){
+            ctx.fillStyle = 'red';
+            // ctx.fillRect(this.x,this.y, this.width,this.height);
+            ctx.drawImage(img1, this.x, this.y);
+        }
+    }
+
+    let timer = 0;
+    let cactusAll = [];
+    let jumpTimer = 0;
+    let animation;
+
+    function frame(){   // 여기에 적은 코드들은 1초에 60번 실행한다
+        animation = requestAnimationFrame(frame);    // 얘까지 적어놓고 시작
+        timer++;
+
+        ctx.clearRect(0,0, canvas.width, canvas.height); // 움직이면서 잔상이 남는데 이게 없애주는 역할을 함
+
+        if (timer % 200 === 0) { // 120프레임마다 장애물 생성해서 배열에 넣음
+            let cactus = new Cactus();
+            cactusAll.push(cactus);
+        }
+        cactusAll.forEach((a, i, o)=>{    // 배열에 모인 장애물들을 다 그림
+            // x 좌표가 0 미만이면 제거
+            if (a.x < 0) {
+                o.splice(i,1)
+            }
+            a.x--;  // x를 1씩 빼주면 오른쪽에서 왼쪽으로 이동
+
+            collapse(dino, a);
+
+            a.draw();
+
+            // 점프기능
+            if (space == true) {
+                dino.y--;
+                jumpTimer++;
+            }
+            if (space == false) {
+                if (dino.y > 250) {
+                    dino.y++;
+                }
+            }
+            if (jumpTimer > 100) {
+                space = false;  // 계속 위로 올라가지 않게
+                jumpTimer = 0;  // 초기화해줘서 여러번 점프 가능
+            }
+
+            a.draw();
+        });
+        dino.y -= 2;
+        dino.draw();
+    }
+    frame();
+
+    // 충돌 확인
+    function collapse(dino, cactus){
+        let xGap = cactus.x - (dino.x + dino.width);
+        // 장애물의 x좌표(장애물의 왼쪽)
+        // 공룡의 x좌표(공룡의 왼쪽)에
+        // 공룡의 너비를 더해야 공룡의 오른쪽과 장애물의 왼쪽이 충돌
+        let yGap = cactus.y - (dino.y + dino.height);
+        if (xGap < 0 && yGap < 0) { // 충돌
+            ctx.clearRect(0,0, canvas.width,canvas.height);
+            cancelAnimationFrame(animation);    // 충돌하면 에니메이션 종료
+        }
+    }
+
+    let space = false;
+    document.addEventListener('keydown', function(e){
+        if (e.code === 'Space') {
+            space = true;
+        }
+    })
+</script>
+</body>
+</html>
